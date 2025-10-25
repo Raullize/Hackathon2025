@@ -40,7 +40,7 @@ const Hero = () => {
 
         {/* CTA Button */}
         <div className="mb-16">
-          <button className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 ease-out bg-[#045C6D] hover:bg-[#0891b2] rounded-full shadow-2xl hover:shadow-[#0891b2]/25 hover:scale-105 transform">
+          <button className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 ease-out bg-[#045C6D] hover:bg-[#0891b2] rounded-lg shadow-2xl hover:shadow-[#0891b2]/25 hover:scale-105 transform">
             <span className="relative flex items-center space-x-3">
               <span>Cadastre-se para Alertas</span>
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">

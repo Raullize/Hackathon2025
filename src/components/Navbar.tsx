@@ -17,7 +17,7 @@ const Navbar = () => {
                  <a
                    key={item}
                    href={`#${item.toLowerCase()}`}
-                   className="text-gray-300 hover:text-white hover:bg-[#045C6D]/30 px-3 py-2 rounded-full text-sm font-medium transition-all duration-200 ease-in-out border border-transparent hover:border-[#045C6D]/50"
+                   className="text-gray-300 hover:text-white hover:bg-[#045C6D]/30 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ease-in-out border border-transparent hover:border-[#045C6D]/50"
                  >
                    {item}
                  </a>
@@ -25,7 +25,7 @@ const Navbar = () => {
              </div>
 
             {/* Login/Signup Button - Glass Effect */}
-            <button className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ease-in-out border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl">
+            <button className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl">
               Entrar
             </button>
           </div>
