@@ -4,8 +4,15 @@ import React from 'react';
 import Image from 'next/image';
 
 const Partners = () => {
-  // Array com os logos dos parceiros (6 logos)
-  const partners = Array(6).fill({ name: 'JGB', logo: '/images/companies/jgb-logo.png' });
+  // Array com os logos dos parceiros - JGB, Gerdau e GKN duas vezes cada
+  const partners = [
+    { name: 'JGB', logo: '/images/companies/jgb-logo.png' },
+    { name: 'Gerdau', logo: '/images/companies/gerdau-logo.png' },
+    { name: 'GKN', logo: '/images/companies/gkn-logo.png' },
+    { name: 'JGB', logo: '/images/companies/jgb-logo.png' },
+    { name: 'Gerdau', logo: '/images/companies/gerdau-logo.png' },
+    { name: 'GKN', logo: '/images/companies/gkn-logo.png' }
+  ];
 
   return (
     <section className="py-16 bg-gray-50">
