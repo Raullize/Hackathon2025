@@ -35,14 +35,14 @@ const Hero = () => {
         {/* Description */}
         <p className="text-base md:text-lg text-gray-100 mb-12 max-w-3xl mx-auto leading-relaxed">
           Receba alertas precoces sobre enchentes, tempestades e outros eventos climáticos extremos. 
-          Nossa IA monitora em tempo real a bacia do Rio Jacuí para manter você e sua família seguros.
+          O MIRC monitora em tempo real a bacia do Rio Jacuí para manter você e sua família seguros.
         </p>
 
         {/* CTA Button */}
         <div className="mb-16">
           <button className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 ease-out bg-[#045C6D] hover:bg-[#0891b2] rounded-full shadow-2xl hover:shadow-[#0891b2]/25 hover:scale-105 transform">
             <span className="relative flex items-center space-x-3">
-              <span>Quero ser Notificado</span>
+              <span>Cadastre-se para Alertas</span>
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
