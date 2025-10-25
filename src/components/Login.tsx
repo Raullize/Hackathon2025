@@ -44,6 +44,7 @@ const Login = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showRegisterPassword, setShowRegisterPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [acceptTerms, setAcceptTerms] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -496,12 +497,34 @@ const Login = () => {
                   )}
                 </div>
 
+                {/* Checkbox de aceitar termos */}
+                <div className="flex items-start space-x-3">
+                  <input
+                    id="acceptTerms"
+                    name="acceptTerms"
+                    type="checkbox"
+                    checked={acceptTerms}
+                    onChange={(e) => setAcceptTerms(e.target.checked)}
+                    className="mt-1 h-4 w-4 text-[#045C6D] focus:ring-[#045C6D] border-gray-300 rounded cursor-pointer"
+                  />
+                  <label htmlFor="acceptTerms" className="text-sm text-gray-600 cursor-pointer">
+                    Eu aceito os{' '}
+                    <a href="#" className="text-[#045C6D] hover:text-[#0891b2] font-medium cursor-pointer">
+                      Termos de Uso
+                    </a>
+                    {' '}e a{' '}
+                    <a href="#" className="text-[#045C6D] hover:text-[#0891b2] font-medium cursor-pointer">
+                      Política de Privacidade
+                    </a>
+                  </label>
+                </div>
+
                 {/* Botões */}
                 <div className="space-y-3">
                   <button
                     type="submit"
-                    disabled={!registerPassword || !confirmPassword || registerPassword !== confirmPassword}
-                    className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-[#045C6D] hover:bg-[#0891b2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#045C6D] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={!registerPassword || !confirmPassword || registerPassword !== confirmPassword || !acceptTerms}
+                    className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-[#045C6D] hover:bg-[#045C6D]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#045C6D] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                   >
                     Criar conta
                   </button>
