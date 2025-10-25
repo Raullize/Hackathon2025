@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import "./globals.css";
-import { ChatBot } from "@/components/ChatBot";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -23,7 +22,6 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={`${sora.className} antialiased`}>
         {children}
-        <ChatBot />
       </body>
     </html>
   );
