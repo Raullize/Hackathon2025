@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Navbar = () => {
   return (
@@ -7,9 +8,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="shrink-0">
-            <img 
+            <Image 
               src="/logos/logo-2.png" 
               alt="MIRC Logo" 
+              width={40}
+              height={40}
               className="h-10 w-auto"
             />
           </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -7,9 +8,11 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo */}
           <div className="mb-4 md:mb-0">
-            <img 
+            <Image 
               src="/logos/logo-2.png" 
               alt="MIRC Logo" 
+              width={64}
+              height={64}
               className="h-16 w-auto"
             />
           </div>
