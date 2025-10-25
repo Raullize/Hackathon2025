@@ -506,13 +506,13 @@ const InteractiveMap = () => {
                   
                   <div className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-white p-3 rounded-lg">
+                      <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
                         <p className="text-sm text-gray-600">Temperatura</p>
                         <p className="text-lg font-semibold text-gray-800">
                           {selectedCityData.temperatura}
                         </p>
                       </div>
-                      <div className="bg-white p-3 rounded-lg">
+                      <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
                         <p className="text-sm text-gray-600">Umidade</p>
                         <p className="text-lg font-semibold text-gray-800">
                           {selectedCityData.umidade}
@@ -520,7 +520,7 @@ const InteractiveMap = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
                       <p className="text-sm text-gray-600">Nível de Risco</p>
                       <div className="flex items-center gap-2">
                         <div
@@ -533,7 +533,7 @@ const InteractiveMap = () => {
                       </div>
                     </div>
                     
-                    <div className="bg-white p-3 rounded-lg">
+                    <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
                       <p className="text-sm text-gray-600">População</p>
                       <p className="text-lg font-semibold text-gray-800">
                         {selectedCityData.populacao}
