@@ -123,12 +123,7 @@ export function ChatBot() {
 
             {/* Loading indicator */}
             {isTyping && (
-              <div className="flex items-start space-x-3 mb-4">
-                <div className="w-8 h-8 bg-[#045C6D] rounded-full flex items-center justify-center shrink-0">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
+              <div className="flex justify-start mb-4">
                 <div className="bg-gray-100 rounded-lg px-4 py-2 max-w-xs">
                   <div className="flex items-center space-x-2">
                     <div className="flex space-x-1">
