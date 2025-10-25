@@ -42,7 +42,7 @@ export function ChatBot() {
       <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={toggleChat}
-          className="w-16 h-16 bg-[#045C6D] hover:bg-[#0891b2] rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+          className="w-16 h-16 bg-[#045C6D] hover:bg-[#0891b2] rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group cursor-pointer"
           aria-label="Abrir chat"
         >
           <Image

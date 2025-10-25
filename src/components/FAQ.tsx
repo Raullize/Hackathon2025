@@ -53,7 +53,7 @@ const FAQ = () => {
             >
               <button
                 onClick={() => toggleItem(index)}
-                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
+                className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
               >
                 <span className="font-medium text-gray-900 pr-4">
                   {item.question}
@@ -82,7 +82,7 @@ const FAQ = () => {
           <p className="text-gray-600 mb-4">
             Ainda tem dúvidas? Entre em contato conosco!
           </p>
-          <button className="bg-[#045C6D] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0891b2] transition-colors duration-200">
+          <button className="bg-[#045C6D] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#0891b2] transition-colors duration-200 cursor-pointer">
             Falar com Suporte
           </button>
         </div>

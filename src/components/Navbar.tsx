@@ -33,7 +33,7 @@ const Navbar = () => {
                  <a
                    key={item}
                    href={`#${item.toLowerCase()}`}
-                   className="text-gray-300 hover:text-white hover:bg-[#045C6D]/30 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ease-in-out border border-transparent hover:border-[#045C6D]/50"
+                   className="text-gray-300 hover:text-white hover:bg-[#045C6D]/30 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ease-in-out border border-transparent hover:border-[#045C6D]/50 cursor-pointer"
                  >
                    {item}
                  </a>
@@ -51,7 +51,7 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button className="text-gray-300 hover:text-white p-2">
+            <button className="text-gray-300 hover:text-white p-2 cursor-pointer">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>

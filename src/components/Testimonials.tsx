@@ -105,7 +105,7 @@ const Testimonials = () => {
           <p className="text-gray-600 mb-4">
             Você também pode fazer parte dessas histórias de proteção e segurança.
           </p>
-          <button className="bg-[#045C6D] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#0891b2] transition-colors duration-200">
+          <button className="bg-[#045C6D] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#0891b2] transition-colors duration-200 cursor-pointer">
             Ver Mais Depoimentos
           </button>
         </div>
