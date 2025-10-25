@@ -8,7 +8,7 @@ const Testimonials = () => {
     {
       id: 1,
       name: "Maria Silva",
-      location: "Criciúma, SC",
+      location: "São Jerônimo, RS",
       avatar: "MS",
       rating: 5,
       text: "O sistema me alertou sobre uma enchente 2 horas antes de acontecer. Consegui retirar minha família e nossos pertences a tempo. Sem dúvida salvou nossas vidas!",
@@ -17,7 +17,7 @@ const Testimonials = () => {
     {
       id: 2,
       name: "João Santos",
-      location: "Tubarão, SC", 
+      location: "Triunfo, RS", 
       avatar: "JS",
       rating: 5,
       text: "O chatbot me ajudou a entender os riscos da minha região em poucos minutos. Muito prático e informativo, agora sei exatamente como me preparar para emergências.",
@@ -26,7 +26,7 @@ const Testimonials = () => {
     {
       id: 3,
       name: "Ana Costa",
-      location: "Lauro Müller, SC",
+      location: "Charqueadas, RS",
       avatar: "AC",
       rating: 5,
       text: "Recebi um alerta de deslizamento que me fez evacuar minha casa. No dia seguinte, parte do morro realmente deslizou. Sou eternamente grata por este sistema!",
@@ -35,7 +35,7 @@ const Testimonials = () => {
     {
       id: 4,
       name: "Carlos Oliveira",
-      location: "Siderópolis, SC",
+      location: "Butiá, RS",
       avatar: "CO",
       rating: 5,
       text: "Como empresário, uso o sistema para proteger meus funcionários. Os alertas são precisos e me permitem tomar decisões rápidas para garantir a segurança de todos.",
