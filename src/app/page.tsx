@@ -9,8 +9,8 @@ export default function Home() {
     <main className="min-h-screen bg-gray-50">
       <Navbar />
       <Hero />
-      <Partners />
       <InteractiveMap />
+      <Partners />
       <Footer />
     </main>
   );
