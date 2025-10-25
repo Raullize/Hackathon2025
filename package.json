@@ -11,8 +11,8 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
-    "db:seed": "prisma db seed",
-    "db:seed:cleanup": "node scripts/cleanup-seed.js"
+    "db:seed": "tsx prisma/seeders/index.ts",
+    "db:seed:cleanup": "tsx prisma/seeders/index.ts --cleanup"
   },
   "dependencies": {
     "@ai-sdk/google": "^2.0.23",
@@ -43,6 +43,7 @@
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.15",
+    "tsx": "^4.20.6",
     "typescript": "^5"
   }
 }
