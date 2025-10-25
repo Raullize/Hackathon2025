@@ -29,7 +29,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserResponse | null>(null);
   const [token, setToken] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Verificar se há token salvo no localStorage ao inicializar
   useEffect(() => {
@@ -47,8 +47,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         localStorage.removeItem('auth_user');
       }
     }
-    
-    setIsLoading(false);
   }, []);
 
   const login = async (email: string, password: string): Promise<{ success: boolean; error?: string }> => {
