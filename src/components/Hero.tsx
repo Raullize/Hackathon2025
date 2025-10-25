@@ -28,7 +28,7 @@ const Hero = () => {
       
       <div className="relative z-20 max-w-4xl mx-auto text-center">
         <div className="mb-6 sm:mb-8">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight px-4">
             Proteja-se dos{' '}
             <span className="text-[#0891b2]">
               Riscos Climáticos
