@@ -119,8 +119,8 @@ const InteractiveMap = () => {
         
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Mapa SVG */}
-          <div className="flex-1">
-            <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 relative">
+          <div className="lg:w-2/3">
+            <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 relative h-full">
               {/* Legenda movida para fora do SVG */}
               <div className="absolute bottom-4 left-4 bg-white p-3 rounded-lg shadow-md border border-gray-200">
                 <p className="text-sm font-bold text-gray-800 mb-2">Nível de Risco Climático:</p>
@@ -294,8 +294,8 @@ const InteractiveMap = () => {
           </div>
           
           {/* Sidebar com informações */}
-          <div className="lg:w-80">
-            <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 h-fit">
+          <div className="lg:w-1/3">
+            <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 h-full">
               {selectedCityData ? (
                 <div>
                   <h3 className="text-xl font-bold text-gray-800 mb-4">
