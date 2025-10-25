@@ -1,7 +1,16 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
+  const router = useRouter();
+
+  const handleLoginClick = () => {
+    router.push('/login');
+  };
+
   return (
     <nav className="bg-[#19323B] shadow-lg border-b border-[#045C6D]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,7 +41,10 @@ const Navbar = () => {
              </div>
 
             {/* Login/Signup Button - Glass Effect */}
-            <button className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl">
+            <button 
+              onClick={handleLoginClick}
+              className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl cursor-pointer"
+            >
               Entrar
             </button>
           </div>

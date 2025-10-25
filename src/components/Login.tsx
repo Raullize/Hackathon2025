@@ -1,9 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 const Login = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  
   // Estados para login
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,6 +17,15 @@ const Login = () => {
   // Estados para registro
   const [isRegisterMode, setIsRegisterMode] = useState(false);
   const [registerStep, setRegisterStep] = useState(1);
+
+  // Detectar se deve iniciar em modo de cadastro
+  useEffect(() => {
+    const mode = searchParams.get('mode');
+    if (mode === 'register') {
+      setIsRegisterMode(true);
+      setRegisterStep(1);
+    }
+  }, [searchParams]);
   
   // Dados do registro - Etapa 1
   const [firstName, setFirstName] = useState('');
@@ -86,6 +99,11 @@ const Login = () => {
     setRegisterStep(1);
   };
 
+  // Função para voltar à página inicial
+  const goBackToHome = () => {
+    router.push('/');
+  };
+
   // Função para ir para a segunda etapa
   const goToStep2 = () => {
     setRegisterStep(2);
@@ -135,11 +153,25 @@ const Login = () => {
       {/* Lado Esquerdo - Formulário de Login */}
       <div className="flex-1 flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
+          {/* Botão Voltar */}
+          <div className="flex justify-start">
+            <button
+              type="button"
+              onClick={goBackToHome}
+              className="flex items-center text-[#045C6D] hover:text-[#0891b2] font-medium cursor-pointer transition-colors duration-200"
+            >
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Voltar
+            </button>
+          </div>
+
           {/* Título */}
           <div className="text-center">
             <h2 className="text-3xl font-bold text-[#045C6D] mb-2">
               {isRegisterMode 
-                ? (registerStep === 1 ? 'Criar conta - Dados pessoais' : 'Criar conta - Senha')
+                ? 'Criar conta'
                 : 'Faça seu login'
               }
             </h2>
