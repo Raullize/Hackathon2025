@@ -3,16 +3,27 @@
 import { useState } from 'react';
 import { useChat, type UIMessage } from '@ai-sdk/react';
 import Image from 'next/image';
+import { useAuth } from '@/hooks/useAuth';
+import { useRouter } from 'next/navigation';
 
 export function ChatBot() {
   const { messages, sendMessage } = useChat();
   const [input, setInput] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
+  const { isAuthenticated, user } = useAuth();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input) return;
+
+    // Verificar se o usuário está autenticado
+    if (!isAuthenticated) {
+      // Redirecionar para a página de login
+      router.push('/login');
+      return;
+    }
 
     const userMessage = input;
     setInput('');
@@ -86,18 +97,32 @@ export function ChatBot() {
 
           {/* Área de Mensagens */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
-            {messages.length === 0 && (
+            {!isAuthenticated ? (
               <div className="text-center">
                 <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
                   <p className="text-gray-600 text-sm mb-2">
-                    👋 Olá! Sou o assistente do MIRC.
+                    🔒 Para usar o chat, você precisa estar logado.
+                  </p>
+                  <button
+                    onClick={() => router.push('/login')}
+                    className="mt-2 px-4 py-2 bg-[#045C6D] text-white text-xs rounded-lg hover:bg-[#0891b2] transition-colors cursor-pointer"
+                  >
+                    Fazer Login
+                  </button>
+                </div>
+              </div>
+            ) : messages.length === 0 ? (
+              <div className="text-center">
+                <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                  <p className="text-gray-600 text-sm mb-2">
+                    👋 Olá{user?.firstName ? `, ${user.firstName}` : ''}! Sou o assistente do MIRC.
                   </p>
                   <p className="text-gray-500 text-xs">
                     Pergunte-me sobre o projeto ou riscos climáticos.
                   </p>
                 </div>
               </div>
-            )}
+            ) : null}
 
             {messages.map((m: UIMessage) => (
                <div
@@ -143,12 +168,15 @@ export function ChatBot() {
               <input
                 value={input}
                 onChange={handleInputChange}
-                placeholder="Digite sua pergunta..."
-                className="flex-1 px-4 py-2 text-sm border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#045C6D] focus:border-transparent"
+                placeholder={isAuthenticated ? "Digite sua pergunta..." : "Faça login para usar o chat"}
+                disabled={!isAuthenticated}
+                className={`flex-1 px-4 py-2 text-sm border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-[#045C6D] focus:border-transparent ${
+                  !isAuthenticated ? 'bg-gray-100 cursor-not-allowed' : ''
+                }`}
               />
               <button
                   type="submit"
-                  disabled={!input.trim() || isTyping}
+                  disabled={!input.trim() || isTyping || !isAuthenticated}
                   className="w-10 h-10 bg-[#045C6D] hover:bg-[#0891b2] disabled:bg-gray-300 disabled:cursor-not-allowed rounded-full flex items-center justify-center transition-colors duration-200 cursor-pointer"
                   aria-label="Enviar mensagem"
                 >
