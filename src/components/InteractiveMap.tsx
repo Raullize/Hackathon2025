@@ -247,7 +247,7 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
-                          <text x="410" y="300" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
+                          <text x="420" y="295" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Butiá
                           </text>
                         </g>
@@ -263,7 +263,7 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
-                          <text x="280" y="340" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
+                          <text x="320" y="325" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Minas do Leão
                           </text>
                         </g>
@@ -279,7 +279,7 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
-                          <text x="450" y="415" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
+                          <text x="450" y="380" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Barão do Triunfo
                           </text>
                         </g>
