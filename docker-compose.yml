@@ -2,14 +2,24 @@ services:
   app:
     build: .
     ports:
-      - "3001:3000"
+      - "3000:3000"  # Porta consistente para evitar conflitos
     environment:
       - NODE_ENV=development
+      - DATABASE_URL=postgresql://hackathon_user:hackathon_password@db:5432/hackathon_db?schema=public
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - SESSION_SECRET=${SESSION_SECRET:-your-super-secret-session-key-here}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-your-secret-key-here}
+      - NEXTAUTH_URL=http://localhost:3000
     volumes:
       - .:/app
-      - /app/node_modules
+      - node_modules_cache:/app/node_modules  # Volume nomeado para cache
+      - /app/.next  # Evita conflitos com build cache
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+    restart: unless-stopped
 
   db:
     image: postgres:15-alpine
@@ -21,6 +31,19 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hackathon_user -d hackathon_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+    restart: unless-stopped
 
 volumes:
   postgres_data:
+  node_modules_cache:
+
+networks:
+  app-network:
+    driver: bridge
