@@ -9,8 +9,18 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Hackathon 2025",
-  description: "Base arquitetural para Hackathon 2025",
+  title: "MIRC - Início",
+  description: "MIRC - Movimento Integrado de Revitalização das Cidades. Plataforma dedicada ao desenvolvimento urbano sustentável e revitalização de cidades na região metropolitana.",
+  keywords: "MIRC, revitalização urbana, desenvolvimento sustentável, cidades, urbanismo, planejamento urbano",
+  authors: [{ name: "MIRC" }],
+  viewport: "width=device-width, initial-scale=1",
+  robots: "index, follow",
+  openGraph: {
+    title: "MIRC - Movimento Integrado de Revitalização das Cidades",
+    description: "Plataforma dedicada ao desenvolvimento urbano sustentável e revitalização de cidades.",
+    type: "website",
+    locale: "pt_BR",
+  },
 };
 
 export default function RootLayout({

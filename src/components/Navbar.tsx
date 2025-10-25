@@ -172,7 +172,7 @@ const Navbar = () => {
               handleLoginClick();
               closeMobileMenu();
             }}
-            className="w-full mt-6 bg-[#FF6B35] hover:bg-[#FF6B35]/90 text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer"
+            className="w-full mt-6 bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer"
           >
             Entrar
           </button>
