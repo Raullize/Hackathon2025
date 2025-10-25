@@ -15,6 +15,7 @@ interface CityData {
 
 const InteractiveMap = () => {
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
+  const [hoveredCity, setHoveredCity] = useState<string | null>(null);
 
   // Dados mockados das cidades da região do Jacuí
   const cidadesData: Record<string, CityData> = {
@@ -143,6 +144,19 @@ const InteractiveMap = () => {
               
               {/* Mapa do Rio Grande do Sul usando imagem */}
               <div className="relative flex justify-center">
+                {/* Hover card no canto superior esquerdo */}
+                {hoveredCity && (
+                  <div className="absolute top-0 left-0 bg-white p-2 rounded-lg shadow-lg border border-gray-200 z-10">
+                    <Image 
+                      src={`/images/cities/${hoveredCity}.${hoveredCity === 'arroio-dos-ratos' ? 'png' : hoveredCity === 'sao-jeronimo' ? 'jpeg' : 'jpg'}`}
+                      alt={cidadesData[hoveredCity].nome}
+                      width={225}
+                      height={225}
+                      className="rounded-lg object-cover shadow-lg border-2 border-gray-100"
+                    />
+                  </div>
+                )}
+                
                 <Image 
                   src="/images/map/rs.png" 
                   alt="Mapa do Rio Grande do Sul" 
@@ -161,7 +175,10 @@ const InteractiveMap = () => {
                 >
                   <g>
                         {/* Charqueadas */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('charqueadas')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('charqueadas')}
+                           onMouseEnter={() => setHoveredCity('charqueadas')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="550"
                             cy="150"
@@ -177,7 +194,10 @@ const InteractiveMap = () => {
                         </g>
                         
                         {/* Triunfo */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('triunfo')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('triunfo')}
+                           onMouseEnter={() => setHoveredCity('triunfo')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="450"
                             cy="175"
@@ -193,7 +213,10 @@ const InteractiveMap = () => {
                         </g>
                         
                         {/* General Câmara */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('general-camara')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('general-camara')}
+                           onMouseEnter={() => setHoveredCity('general-camara')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="370"
                             cy="200"
@@ -209,7 +232,10 @@ const InteractiveMap = () => {
                         </g>
                         
                         {/* São Jerônimo */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('sao-jeronimo')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('sao-jeronimo')}
+                           onMouseEnter={() => setHoveredCity('sao-jeronimo')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="490"
                             cy="225"
@@ -225,7 +251,10 @@ const InteractiveMap = () => {
                         </g>
                         
                         {/* Arroio dos Ratos */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('arroio-dos-ratos')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('arroio-dos-ratos')}
+                           onMouseEnter={() => setHoveredCity('arroio-dos-ratos')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="520"
                             cy="275"
@@ -241,7 +270,10 @@ const InteractiveMap = () => {
                         </g>
                         
                         {/* Butiá */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('butia')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('butia')}
+                           onMouseEnter={() => setHoveredCity('butia')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="420"
                             cy="310"
@@ -257,7 +289,10 @@ const InteractiveMap = () => {
                         </g>
                         
                         {/* Minas do Leão */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('minas-do-leao')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('minas-do-leao')}
+                           onMouseEnter={() => setHoveredCity('minas-do-leao')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="320"
                             cy="340"
@@ -273,7 +308,10 @@ const InteractiveMap = () => {
                         </g>
                         
                         {/* Barão do Triunfo */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('barao-do-triunfo')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('barao-do-triunfo')}
+                           onMouseEnter={() => setHoveredCity('barao-do-triunfo')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="450"
                             cy="395"
@@ -298,7 +336,11 @@ const InteractiveMap = () => {
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 h-full">
               {selectedCityData ? (
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4">
+                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
                     {selectedCityData.nome}
                   </h3>
                   
