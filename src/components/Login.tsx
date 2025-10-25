@@ -22,8 +22,11 @@ const Login = () => {
   useEffect(() => {
     const mode = searchParams.get('mode');
     if (mode === 'register') {
-      setIsRegisterMode(true);
-      setRegisterStep(1);
+      // Use setTimeout para evitar setState síncrono dentro do effect
+      setTimeout(() => {
+        setIsRegisterMode(true);
+        setRegisterStep(1);
+      }, 0);
     }
   }, [searchParams]);
   
