@@ -68,7 +68,7 @@ const Testimonials = () => {
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center">
                   {/* Avatar */}
-                  <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold text-sm mr-4">
+                  <div className="w-12 h-12 bg-[#045C6D] rounded-full flex items-center justify-center text-white font-semibold text-sm mr-4">
                     {testimonial.avatar}
                   </div>
                   
@@ -80,7 +80,7 @@ const Testimonials = () => {
                 </div>
 
                 {/* Categoria */}
-                <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                <span className="bg-[#045C6D]/10 text-[#045C6D] px-3 py-1 rounded-full text-sm font-medium">
                   {testimonial.category}
                 </span>
               </div>
@@ -105,8 +105,8 @@ const Testimonials = () => {
           <p className="text-gray-600 mb-4">
             Você também pode fazer parte dessas histórias de proteção e segurança.
           </p>
-          <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300">
-            Cadastre-se para Alertas
+          <button className="bg-[#045C6D] text-white px-8 py-3 rounded-lg font-medium hover:bg-[#0891b2] transition-colors duration-200">
+            Ver Mais Depoimentos
           </button>
         </div>
       </div>
