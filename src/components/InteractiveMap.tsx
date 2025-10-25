@@ -15,6 +15,7 @@ interface CityData {
 
 const InteractiveMap = () => {
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
+  const [hoveredCity, setHoveredCity] = useState<string | null>(null);
 
   // Dados mockados das cidades da região do Jacuí
   const cidadesData: Record<string, CityData> = {
@@ -143,6 +144,19 @@ const InteractiveMap = () => {
               
               {/* Mapa do Rio Grande do Sul usando imagem */}
               <div className="relative flex justify-center">
+                {/* Hover card no canto superior esquerdo */}
+                {hoveredCity && (
+                  <div className="absolute top-0 left-0 bg-white p-2 rounded-lg shadow-lg border border-gray-200 z-10">
+                    <Image 
+                      src={`/images/cities/${hoveredCity}.${hoveredCity === 'arroio-dos-ratos' ? 'png' : hoveredCity === 'sao-jeronimo' ? 'jpeg' : 'jpg'}`}
+                      alt={cidadesData[hoveredCity].nome}
+                      width={225}
+                      height={225}
+                      className="rounded-lg object-cover shadow-lg border-2 border-gray-100"
+                    />
+                  </div>
+                )}
+                
                 <Image 
                   src="/images/map/rs.png" 
                   alt="Mapa do Rio Grande do Sul" 
@@ -161,7 +175,10 @@ const InteractiveMap = () => {
                 >
                   <g>
                         {/* Charqueadas */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('charqueadas')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('charqueadas')}
+                           onMouseEnter={() => setHoveredCity('charqueadas')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="550"
                             cy="150"
@@ -171,13 +188,36 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'charqueadas' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M550 125 C545 125 541 129 541 134 C541 139 550 150 550 150 C550 150 559 139 559 134 C559 129 555 125 550 125 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="550"
+                                cy="134"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="550" y="135" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Charqueadas
                           </text>
                         </g>
                         
                         {/* Triunfo */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('triunfo')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('triunfo')}
+                           onMouseEnter={() => setHoveredCity('triunfo')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="450"
                             cy="175"
@@ -187,13 +227,36 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'triunfo' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M450 150 C445 150 441 154 441 159 C441 164 450 175 450 175 C450 175 459 164 459 159 C459 154 455 150 450 150 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="450"
+                                cy="159"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="450" y="160" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Triunfo
                           </text>
                         </g>
                         
                         {/* General Câmara */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('general-camara')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('general-camara')}
+                           onMouseEnter={() => setHoveredCity('general-camara')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="370"
                             cy="200"
@@ -203,13 +266,36 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'general-camara' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M370 175 C365 175 361 179 361 184 C361 189 370 200 370 200 C370 200 379 189 379 184 C379 179 375 175 370 175 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="370"
+                                cy="184"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="370" y="185" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             General Câmara
                           </text>
                         </g>
                         
                         {/* São Jerônimo */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('sao-jeronimo')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('sao-jeronimo')}
+                           onMouseEnter={() => setHoveredCity('sao-jeronimo')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="490"
                             cy="225"
@@ -219,13 +305,36 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'sao-jeronimo' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M490 200 C485 200 481 204 481 209 C481 214 490 225 490 225 C490 225 499 214 499 209 C499 204 495 200 490 200 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="490"
+                                cy="209"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="490" y="210" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             São Jerônimo
                           </text>
                         </g>
                         
                         {/* Arroio dos Ratos */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('arroio-dos-ratos')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('arroio-dos-ratos')}
+                           onMouseEnter={() => setHoveredCity('arroio-dos-ratos')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="520"
                             cy="275"
@@ -235,13 +344,36 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'arroio-dos-ratos' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M520 250 C515 250 511 254 511 259 C511 264 520 275 520 275 C520 275 529 264 529 259 C529 254 525 250 520 250 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="520"
+                                cy="259"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="520" y="260" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Arroio dos Ratos
                           </text>
                         </g>
                         
                         {/* Butiá */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('butia')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('butia')}
+                           onMouseEnter={() => setHoveredCity('butia')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="420"
                             cy="310"
@@ -251,13 +383,36 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'butia' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M420 285 C415 285 411 289 411 294 C411 299 420 310 420 310 C420 310 429 299 429 294 C429 289 425 285 420 285 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="420"
+                                cy="294"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="420" y="295" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Butiá
                           </text>
                         </g>
                         
                         {/* Minas do Leão */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('minas-do-leao')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('minas-do-leao')}
+                           onMouseEnter={() => setHoveredCity('minas-do-leao')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="320"
                             cy="340"
@@ -267,13 +422,36 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'minas-do-leao' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M320 315 C315 315 311 319 311 324 C311 329 320 340 320 340 C320 340 329 329 329 324 C329 319 325 315 320 315 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="320"
+                                cy="324"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="320" y="325" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Minas do Leão
                           </text>
                         </g>
                         
                         {/* Barão do Triunfo */}
-                        <g className="cursor-pointer group" onClick={() => handleCityClick('barao-do-triunfo')}>
+                        <g className="cursor-pointer group" 
+                           onClick={() => handleCityClick('barao-do-triunfo')}
+                           onMouseEnter={() => setHoveredCity('barao-do-triunfo')}
+                           onMouseLeave={() => setHoveredCity(null)}>
                           <circle
                             cx="450"
                             cy="395"
@@ -283,6 +461,26 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'barao-do-triunfo' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M450 370 C445 370 441 374 441 379 C441 384 450 395 450 395 C450 395 459 384 459 379 C459 374 455 370 450 370 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="450"
+                                cy="379"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="450" y="380" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Barão do Triunfo
                           </text>
@@ -298,7 +496,11 @@ const InteractiveMap = () => {
             <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 h-full">
               {selectedCityData ? (
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4">
+                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
                     {selectedCityData.nome}
                   </h3>
                   
@@ -359,10 +561,11 @@ const InteractiveMap = () => {
                   </div>
                 </div>
               ) : (
-                <div className="text-center text-gray-500">
+                <div className="flex flex-col items-center justify-center h-full text-center text-gray-500">
                   <div className="mb-4">
-                    <svg className="w-16 h-16 mx-auto text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm8 0a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h4a1 1 0 011 1v2a1 1 0 01-1 1h-4a1 1 0 01-1-1v-2z" clipRule="evenodd" />
+                    <svg className="w-16 h-16 mx-auto text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z" />
                     </svg>
                   </div>
                   <p className="text-lg font-medium mb-2">
