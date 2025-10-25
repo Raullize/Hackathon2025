@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Partners from '@/components/Partners';
+import InteractiveMap from '@/components/InteractiveMap';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Partners />
+      <InteractiveMap />
       <Footer />
     </main>
   );
