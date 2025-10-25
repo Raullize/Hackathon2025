@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="mb-8">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Proteja-se dos{' '}
-            <span className="bg-linear-to-r from-green-400 to-emerald-500 bg-clip-text text-transparent">
+            <span className="text-[#0891b2]">
               Riscos Climáticos
             </span>
             <br />
@@ -40,8 +40,7 @@ const Hero = () => {
 
         {/* CTA Button */}
         <div className="mb-16">
-          <button className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 ease-out bg-linear-to-r from-green-500 to-emerald-600 rounded-full shadow-2xl hover:shadow-green-500/25 hover:scale-105 transform">
-            <span className="absolute inset-0 w-full h-full bg-linear-to-r from-green-400 to-emerald-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          <button className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white transition-all duration-300 ease-out bg-[#045C6D] hover:bg-[#0891b2] rounded-full shadow-2xl hover:shadow-[#0891b2]/25 hover:scale-105 transform">
             <span className="relative flex items-center space-x-3">
               <span>Quero ser Notificado</span>
               <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
