@@ -42,9 +42,9 @@ O MIRC foi desenvolvido para proteger comunidades dos riscos climáticos extremo
 
 ## 📚 Documentação
 
-- **[🔄 API Endpoints & CRUD](./docs/CRUD.md)** - Documentação completa de todos os endpoints da API
 - **[🗄️ Estrutura do Banco de Dados](./docs/DATABASE.md)** - Documentação completa dos modelos, relacionamentos e estrutura do banco
 - **[🌱 Seeders](./docs/SEEDERS.md)** - Guia para popular o banco com dados de teste e desenvolvimento
+- **[🔧 Prisma ORM](./docs/PRISMA.md)** - Configuração e uso do Prisma para gerenciamento do banco de dados
 - **[🐳 Docker](./docs/DOCKER.md)** - Configuração de containerização e ambiente de desenvolvimento
 
 ## 📁 Estrutura do Projeto
@@ -142,7 +142,7 @@ Hackathon2025/
    - **Email**: `teste@gmail.com`
    - **Senha**: `123456`
    - **Telefone**: `11999999999`
-   - **Localização**: São Paulo, SP
+   - **Localização**: Charqueadas, RS
 
 7. **Inicie o servidor de desenvolvimento**
    ```bash
@@ -239,36 +239,7 @@ GOOGLE_API_KEY=your-google-ai-api-key-here
 2. Crie uma nova API Key
 3. Adicione a chave no arquivo `.env` como `GOOGLE_API_KEY`
 
-## 🗄️ Modelo de Dados
 
-### 👤 User (Usuário)
-```prisma
-model User {
-  id           String   @id @default(cuid())
-  firstName    String   // Nome
-  lastName     String   // Sobrenome
-  email        String   @unique // Email único
-  phone        String   @unique // Telefone único
-  passwordHash String   // Senha criptografada
-  zipCode      String   // CEP
-  city         String   // Cidade
-  state        String   // Estado (2 caracteres)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-}
-```
-
-### 🔐 Endpoints da API
-
-#### Autenticação
-- `POST /api/auth/register` - Cadastro de usuário
-- `POST /api/auth/login` - Login de usuário
-- `GET /api/auth/me` - Dados do usuário logado
-
-#### ChatBot & Funcionalidades
-- `POST /api/chat` - Conversa com o ChatBot IA
-- `GET /api/health` - Status da aplicação
-- `GET /api/map` - Dados do mapa interativo
 
 ## 🤝 Contribuição
 
