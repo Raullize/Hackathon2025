@@ -7,7 +7,11 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Logo */}
           <div className="mb-4 md:mb-0">
-            <span className="text-xl font-bold text-white">LOGO</span>
+            <img 
+              src="/logos/logo-2.png" 
+              alt="MIRC Logo" 
+              className="h-16 w-auto"
+            />
           </div>
 
           {/* Social Media Links */}
@@ -33,7 +37,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-6 pt-6 border-t border-gray-700 text-center">
           <p className="text-gray-400 text-sm">
-            © 2025 LOGO. Todos os direitos reservados.
+            © 2025 MIRC. Todos os direitos reservados.
           </p>
         </div>
       </div>

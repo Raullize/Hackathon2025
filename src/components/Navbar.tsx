@@ -7,7 +7,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="shrink-0">
-            <span className="text-xl font-bold text-white">Logo</span>
+            <img 
+              src="/logos/logo-2.png" 
+              alt="MIRC Logo" 
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* Navigation Links - Moved to right side */}
