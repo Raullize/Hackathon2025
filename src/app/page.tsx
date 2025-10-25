@@ -5,6 +5,7 @@ import InteractiveMap from '@/components/InteractiveMap';
 import Testimonials from '@/components/Testimonials';
 import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
+import { ChatBot } from '@/components/ChatBot';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <Footer />
+      <ChatBot />
     </main>
   );
 }
