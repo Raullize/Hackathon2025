@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'sora': ['Sora', 'sans-serif'],
+      },
       animation: {
         'marquee': 'marquee 30s linear infinite',
       },
