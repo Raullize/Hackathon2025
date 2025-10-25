@@ -1,20 +1,44 @@
-# Hackathon2025
+# MIRC - Mapeador Inteligente de Resiliência Climática
 
-Detalhar...
+O **MIRC** é uma aplicação web inovadora que utiliza inteligência artificial e geolocalização para fornecer alertas precoces e informações personalizadas sobre riscos climáticos no Rio Grande do Sul, com foco especial na bacia do Rio Jacuí.
+
+## 🎯 Sobre o Projeto
+
+O MIRC foi desenvolvido para proteger comunidades dos riscos climáticos extremos, oferecendo:
+
+- **🤖 Assistente de IA Especializado**: ChatBot inteligente com conhecimento sobre riscos climáticos
+- **🗺️ Mapa Interativo**: Visualização em tempo real de dados climáticos e alertas
+- **🔔 Sistema de Alertas**: Notificações multicanal (SMS, WhatsApp) para eventos extremos
+- **👤 Autenticação Segura**: Sistema completo de login e cadastro de usuários
+- **📱 Interface Responsiva**: Design moderno e adaptável para todos os dispositivos
 
 ## 🚀 Tecnologias Utilizadas
 
 ### Frontend
-- Detalhar...
+- **Next.js 14** - Framework React com App Router
+- **React 18** - Biblioteca para interfaces de usuário
+- **TypeScript** - Tipagem estática para JavaScript
+- **Tailwind CSS 4** - Framework CSS utilitário
+- **Heroicons** - Biblioteca de ícones SVG
+- **@ai-sdk/react** - SDK para integração com IA
 
-### Backend
-- Detalhar...
+### Backend & IA
+- **Next.js API Routes** - Endpoints serverless
+- **Google Gemini 2.5 Pro** - Modelo de IA para o ChatBot
+- **@ai-sdk/google** - SDK para integração com Google AI
+- **JWT (jsonwebtoken)** - Autenticação baseada em tokens
+- **bcryptjs** - Hash seguro de senhas
 
 ### Banco de Dados
-- Detalhar...
+- **PostgreSQL** - Banco de dados relacional
+- **Prisma ORM** - Object-Relational Mapping
+- **Prisma Client** - Cliente type-safe para banco de dados
 
 ### DevOps & Ferramentas
-- Detalhar...
+- **Docker & Docker Compose** - Containerização e orquestração
+- **ESLint & Prettier** - Linting e formatação de código
+- **TypeScript** - Desenvolvimento type-safe
+- **tsx** - Executor TypeScript para desenvolvimento
 
 ## 📚 Documentação
 
@@ -26,7 +50,51 @@ Detalhar...
 ## 📁 Estrutura do Projeto
 
 ```
-Detalhar...
+Hackathon2025/
+├── 📁 prisma/                    # Configuração do banco de dados
+│   ├── schema.prisma            # Schema do Prisma (modelo User)
+│   └── seeders/                 # Scripts para popular o banco
+│       ├── index.ts            # Orquestrador dos seeders
+│       └── userSeeder.ts       # Seeder para usuários de teste
+├── 📁 src/
+│   ├── 📁 app/                  # App Router do Next.js
+│   │   ├── 📁 api/              # Endpoints da API
+│   │   │   ├── auth/           # Autenticação (login, register, me)
+│   │   │   ├── chat/           # ChatBot com IA
+│   │   │   ├── health/         # Health check
+│   │   │   └── map/            # Dados do mapa
+│   │   ├── login/              # Página de login/cadastro
+│   │   ├── layout.tsx          # Layout principal
+│   │   ├── page.tsx            # Página inicial
+│   │   └── globals.css         # Estilos globais
+│   ├── 📁 components/           # Componentes React
+│   │   ├── ChatBot.tsx         # ChatBot com IA
+│   │   ├── Hero.tsx            # Seção hero da landing page
+│   │   ├── Login.tsx           # Formulários de login/cadastro
+│   │   ├── Navbar.tsx          # Barra de navegação
+│   │   ├── InteractiveMap.tsx  # Mapa interativo
+│   │   ├── FAQ.tsx             # Perguntas frequentes
+│   │   ├── Footer.tsx          # Rodapé
+│   │   ├── Partners.tsx        # Seção de parceiros
+│   │   └── Testimonials.tsx    # Depoimentos
+│   ├── 📁 hooks/                # Custom hooks
+│   │   └── useAuth.ts          # Hook de autenticação
+│   ├── 📁 lib/                  # Utilitários e configurações
+│   │   └── prisma.ts           # Cliente Prisma
+│   ├── 📁 types/                # Definições de tipos TypeScript
+│   │   └── auth.ts             # Tipos de autenticação
+│   └── 📁 generated/            # Arquivos gerados automaticamente
+│       └── prisma/             # Cliente Prisma gerado
+├── 📁 public/                   # Arquivos estáticos
+│   ├── images/                 # Imagens (chat, cities, companies, map)
+│   ├── logos/                  # Logotipos
+│   └── videos/                 # Vídeos de background
+├── 📁 docs/                     # Documentação
+├── .env.example                # Exemplo de variáveis de ambiente
+├── docker-compose.yml          # Configuração Docker
+├── package.json                # Dependências e scripts
+├── tailwind.config.js          # Configuração Tailwind
+└── tsconfig.json               # Configuração TypeScript
 ```
 
 ## 🚀 Como Executar o Projeto
@@ -70,8 +138,11 @@ Detalhar...
    ```bash
    npm run db:seed
    ```
-   Isso criará:
-   - Detalhar...
+   Isso criará um usuário de teste com as seguintes credenciais:
+   - **Email**: `teste@gmail.com`
+   - **Senha**: `123456`
+   - **Telefone**: `11999999999`
+   - **Localização**: São Paulo, SP
 
 7. **Inicie o servidor de desenvolvimento**
    ```bash
@@ -82,7 +153,35 @@ Detalhar...
    Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
    
    **🔗 Links úteis:**
-   - 🔍 **API Health Check**: [http://localhost:3000/api/health](http://localhost:3000/api/health) *(teste no Insomnia/Postman ou navegador)*
+   - 🏠 **Página Inicial**: [http://localhost:3000](http://localhost:3000) - Landing page com hero, mapa interativo e ChatBot
+   - 🔐 **Login/Cadastro**: [http://localhost:3000/login](http://localhost:3000/login) - Sistema de autenticação
+   - 🤖 **ChatBot**: Disponível na página inicial (requer login)
+   - 🔍 **API Health Check**: [http://localhost:3000/api/health](http://localhost:3000/api/health) - Status da API
+
+## 🎮 Funcionalidades Principais
+
+### 🤖 ChatBot Inteligente
+- **IA Especializada**: Powered by Google Gemini 2.5 Pro
+- **Conhecimento Específico**: Focado em riscos climáticos do RS
+- **Busca em Tempo Real**: Consulta informações atualizadas na internet
+- **Autenticação Obrigatória**: Acesso apenas para usuários logados
+
+### 🔐 Sistema de Autenticação
+- **Cadastro Completo**: Formulário em duas etapas com validação
+- **Login Seguro**: JWT tokens com bcrypt para senhas
+- **Dados Pessoais**: Nome, email, telefone, CEP, cidade e estado
+- **Validação**: Email e telefone únicos no sistema
+
+### 🗺️ Mapa Interativo
+- **Visualização Geográfica**: Mapa focado na bacia do Rio Jacuí
+- **Dados Climáticos**: Informações sobre riscos e alertas
+- **Interface Responsiva**: Adaptável para desktop e mobile
+
+### 📱 Interface Moderna
+- **Design Responsivo**: Tailwind CSS com componentes otimizados
+- **Vídeos de Background**: Experiência visual imersiva
+- **Navegação Intuitiva**: UX focada na usabilidade
+- **Componentes Modulares**: FAQ, Testimonials, Partners, Footer
 
 ## 📝 Scripts Disponíveis
 
@@ -122,17 +221,54 @@ DATABASE_URL="postgresql://hackathon_user:hackathon_password@localhost:5432/hack
 # Node Environment
 NODE_ENV=development
 
-# NextAuth.js
-# Generate a random secret key at: https://generate-secret.vercel.app/32
-NEXTAUTH_SECRET=your-secret-key-here
-NEXTAUTH_URL=http://localhost:3000
+# Session Secret (para JWT)
+SESSION_SECRET=your-super-secret-key-here
+
+# Google AI API Key (para o ChatBot)
+GOOGLE_API_KEY=your-google-ai-api-key-here
 ```
 
 ### 🔑 Variáveis Importantes:
 - **DATABASE_URL**: Conexão com PostgreSQL (use as credenciais do docker-compose.yml)
 - **NODE_ENV**: Ambiente de execução (development/production)
-- **NEXTAUTH_SECRET**: Chave secreta para autenticação (gere uma nova em produção) <mcreference link="https://generate-secret.vercel.app/32" index="0">0</mcreference>
-- **NEXTAUTH_URL**: URL base da aplicação para NextAuth.js
+- **SESSION_SECRET**: Chave secreta para JWT tokens (gere uma chave segura)
+- **GOOGLE_API_KEY**: Chave da API do Google AI para o ChatBot com Gemini
+
+### 🤖 Configuração da API do Google AI:
+1. Acesse [Google AI Studio](https://aistudio.google.com/)
+2. Crie uma nova API Key
+3. Adicione a chave no arquivo `.env` como `GOOGLE_API_KEY`
+
+## 🗄️ Modelo de Dados
+
+### 👤 User (Usuário)
+```prisma
+model User {
+  id           String   @id @default(cuid())
+  firstName    String   // Nome
+  lastName     String   // Sobrenome
+  email        String   @unique // Email único
+  phone        String   @unique // Telefone único
+  passwordHash String   // Senha criptografada
+  zipCode      String   // CEP
+  city         String   // Cidade
+  state        String   // Estado (2 caracteres)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+```
+
+### 🔐 Endpoints da API
+
+#### Autenticação
+- `POST /api/auth/register` - Cadastro de usuário
+- `POST /api/auth/login` - Login de usuário
+- `GET /api/auth/me` - Dados do usuário logado
+
+#### ChatBot & Funcionalidades
+- `POST /api/chat` - Conversa com o ChatBot IA
+- `GET /api/health` - Status da aplicação
+- `GET /api/map` - Dados do mapa interativo
 
 ## 🤝 Contribuição
 
@@ -182,4 +318,5 @@ NEXTAUTH_URL=http://localhost:3000
 
 ---
 
-Hackathon2025 🚀
+**MIRC - Mapeador Inteligente de Resiliência Climática** 🌦️🛡️  
+*Protegendo comunidades através da tecnologia e inteligência artificial*
