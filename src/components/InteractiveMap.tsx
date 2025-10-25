@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 interface CityData {
   nome: string;
@@ -142,11 +143,14 @@ const InteractiveMap = () => {
               
               {/* Mapa do Rio Grande do Sul usando imagem */}
               <div className="relative flex justify-center">
-                <img 
+                <Image 
                   src="/images/map/rs.png" 
                   alt="Mapa do Rio Grande do Sul" 
+                  width={800}
+                  height={600}
                   className="max-w-full h-auto object-contain"
                   style={{ maxHeight: '500px' }}
+                  priority
                 />
                 
                 {/* SVG overlay para os pontos das cidades */}
