@@ -108,7 +108,7 @@ const InteractiveMap = () => {
   const selectedCityData = selectedCity ? cidadesData[selectedCity] : null;
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-[#0891b2] mb-4">
           Mapa de Riscos Climáticos - Região do Jacuí
