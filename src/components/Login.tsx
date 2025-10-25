@@ -3,11 +3,18 @@
 import React, { useState, useEffect } from 'react';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
 
 const Login = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { login, register, isLoading } = useAuth();
   
+  // Estados para mensagens de erro e sucesso
+  const [loginError, setLoginError] = useState('');
+  const [registerError, setRegisterError] = useState('');
+  const [registerSuccess, setRegisterSuccess] = useState(false);
+
   // Estados para login
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -46,28 +53,90 @@ const Login = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
     if (isRegisterMode) {
       if (registerStep === 1) {
         // Validar primeira etapa e avançar
+        if (!firstName || !lastName || !registerEmail || !phone || !zipCode || !city || !state) {
+          setRegisterError('Todos os campos são obrigatórios');
+          return;
+        }
+        setRegisterError('');
         setRegisterStep(2);
       } else {
         // Processar registro completo
-        console.log('Register attempt:', {
+        if (!registerPassword || !confirmPassword) {
+          setRegisterError('Todos os campos são obrigatórios');
+          return;
+        }
+        
+        if (registerPassword !== confirmPassword) {
+          setRegisterError('As senhas não coincidem');
+          return;
+        }
+        
+        if (!acceptTerms) {
+          setRegisterError('Você deve aceitar os termos de uso');
+          return;
+        }
+        
+        setRegisterError('');
+        
+        const result = await register({
           firstName,
           lastName,
           email: registerEmail,
           phone,
+          password: registerPassword,
           zipCode,
           city,
-          state,
-          password: registerPassword
+          state
         });
+        
+        if (result.success) {
+          setRegisterSuccess(true);
+          // Limpar formulário
+          setFirstName('');
+          setLastName('');
+          setRegisterEmail('');
+          setPhone('');
+          setZipCode('');
+          setCity('');
+          setState('');
+          setRegisterPassword('');
+          setConfirmPassword('');
+          setAcceptTerms(false);
+          
+          // Voltar para login após 2 segundos
+          setTimeout(() => {
+            setRegisterSuccess(false);
+            backToLogin();
+          }, 2000);
+        } else {
+          setRegisterError(result.error || 'Erro no cadastro');
+        }
       }
     } else {
       // Lógica de login
-      console.log('Login attempt:', { email, password, rememberMe });
+      if (!email || !password) {
+        setLoginError('Email e senha são obrigatórios');
+        return;
+      }
+      
+      setLoginError('');
+      
+      const result = await login(email, password);
+      
+      if (result.success) {
+        // Aguardar um pouco para garantir que o estado foi atualizado
+        setTimeout(() => {
+          router.push('/');
+        }, 100);
+      } else {
+        setLoginError(result.error || 'Erro no login');
+      }
     }
   };
 
@@ -238,6 +307,13 @@ const Login = () => {
                   </div>
                 </div>
 
+                {/* Mensagem de erro para login */}
+                {loginError && (
+                  <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-lg">
+                    {loginError}
+                  </div>
+                )}
+
                 {/* Opções */}
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center">
@@ -265,9 +341,10 @@ const Login = () => {
                 <div>
                   <button
                     type="submit"
-                    className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-[#045C6D] hover:bg-[#0891b2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#045C6D] transition-all duration-200"
+                    disabled={isLoading}
+                    className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-[#045C6D] hover:bg-[#0891b2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#045C6D] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Entrar
+                    {isLoading ? 'Entrando...' : 'Entrar'}
                   </button>
                 </div>
 
@@ -390,6 +467,13 @@ const Login = () => {
                   </div>
                 </div>
 
+                {/* Mensagem de erro para registro etapa 1 */}
+                {registerError && registerStep === 1 && (
+                  <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-lg">
+                    {registerError}
+                  </div>
+                )}
+
                 {/* Botões */}
                 <div className="space-y-3">
                   <button
@@ -497,6 +581,20 @@ const Login = () => {
                   )}
                 </div>
 
+                {/* Mensagem de erro para registro etapa 2 */}
+                {registerError && registerStep === 2 && (
+                  <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-lg">
+                    {registerError}
+                  </div>
+                )}
+
+                {/* Mensagem de sucesso para registro */}
+                {registerSuccess && (
+                  <div className="text-green-600 text-sm text-center bg-green-50 p-3 rounded-lg">
+                    Conta criada com sucesso! Redirecionando para o login...
+                  </div>
+                )}
+
                 {/* Checkbox de aceitar termos */}
                 <div className="flex items-start space-x-3">
                   <input
@@ -523,10 +621,10 @@ const Login = () => {
                 <div className="space-y-3">
                   <button
                     type="submit"
-                    disabled={!registerPassword || !confirmPassword || registerPassword !== confirmPassword || !acceptTerms}
+                    disabled={!registerPassword || !confirmPassword || registerPassword !== confirmPassword || !acceptTerms || isLoading}
                     className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-[#045C6D] hover:bg-[#045C6D]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#045C6D] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                   >
-                    Criar conta
+                    {isLoading ? 'Criando conta...' : 'Criar conta'}
                   </button>
                   
                   <button

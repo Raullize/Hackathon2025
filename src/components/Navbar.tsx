@@ -3,13 +3,25 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
 
 const Navbar = () => {
   const router = useRouter();
+  const { user, logout, isAuthenticated } = useAuth();
+  const userExists = user !== null;
+
+  const handleLogout = () => {
+    logout();
+  };
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLoginClick = () => {
     router.push('/login');
+  };
+
+  const handleLogoutClick = () => {
+    logout();
+    router.push('/');
   };
 
   const toggleMobileMenu = () => {
@@ -58,13 +70,27 @@ const Navbar = () => {
                  ))}
                </div>
 
-              {/* Login/Signup Button - Glass Effect */}
-              <button 
-                onClick={handleLoginClick}
-                className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl cursor-pointer"
-              >
-                Entrar
-              </button>
+              {/* Login/Logout Button - Glass Effect */}
+              {isAuthenticated ? (
+                <div className="flex items-center space-x-4">
+                  <span className="text-gray-300 text-sm">
+                    Olá, {user?.firstName}
+                  </span>
+                  <button 
+                    onClick={handleLogoutClick}
+                    className="bg-red-500/10 backdrop-blur-md hover:bg-red-500/20 text-red-300 hover:text-red-200 px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out border border-red-500/20 hover:border-red-500/40 shadow-lg hover:shadow-xl cursor-pointer"
+                  >
+                    Sair
+                  </button>
+                </div>
+              ) : (
+                <button 
+                  onClick={handleLoginClick}
+                  className="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ease-in-out border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl cursor-pointer"
+                >
+                  Entrar
+                </button>
+              )}
             </div>
 
             {/* Mobile menu button */}
@@ -166,16 +192,35 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Login Button */}
-          <button 
-            onClick={() => {
-              handleLoginClick();
-              closeMobileMenu();
-            }}
-            className="w-full mt-6 bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer"
-          >
-            Entrar
-          </button>
+          {/* Login/Logout Button */}
+          {isAuthenticated ? (
+            <div className="space-y-4">
+              <div className="text-center">
+                <span className="text-gray-300 text-sm">
+                  Olá, {user?.firstName}
+                </span>
+              </div>
+              <button 
+                onClick={() => {
+                  handleLogoutClick();
+                  closeMobileMenu();
+                }}
+                className="w-full bg-red-500 hover:bg-red-600 text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer"
+              >
+                Sair
+              </button>
+            </div>
+          ) : (
+            <button 
+              onClick={() => {
+                handleLoginClick();
+                closeMobileMenu();
+              }}
+              className="w-full mt-6 bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer"
+            >
+              Entrar
+            </button>
+          )}
         </div>
       </div>
     </>
