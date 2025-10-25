@@ -34,13 +34,13 @@ const FAQ = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-12 sm:py-16 bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <p className="text-sm font-medium text-[#045C6D] uppercase tracking-wide mb-2">
+        <div className="text-center mb-8 sm:mb-12">
+          <p className="text-xs sm:text-sm font-medium text-[#045C6D] uppercase tracking-wide mb-2">
             FAQ
           </p>
-          <h2 className="text-3xl font-bold text-[#045C6D] mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#045C6D] mb-4">
             Dúvidas Frequentes
           </h2>
         </div>

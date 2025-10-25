@@ -15,18 +15,18 @@ const Partners = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-[#0891b2] mb-12">
+    <section className="py-12 sm:py-16 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#0891b2] mb-8 sm:mb-12">
           Veja quem confia no nosso trabalho
         </h2>
         
         {/* Grid de logos estático */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 justify-items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 justify-items-center">
           {partners.map((partner, index) => (
             <div
               key={index}
-              className="w-48 h-24 bg-white rounded-lg shadow-md flex items-center justify-center border border-gray-200 p-4"
+              className="w-32 h-16 sm:w-40 sm:h-20 lg:w-48 lg:h-24 bg-white rounded-lg shadow-md flex items-center justify-center border border-gray-200 p-2 sm:p-4"
             >
               <Image
                 src={partner.logo}

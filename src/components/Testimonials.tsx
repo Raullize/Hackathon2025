@@ -44,43 +44,43 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-12 sm:py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
             Depoimentos
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-4">
             Conheça as histórias de pessoas que foram protegidas pelo nosso sistema de alertas
             e encontraram no nosso chatbot uma fonte confiável de informações sobre segurança.
           </p>
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
+              className="bg-white rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
             >
               {/* Header do Card */}
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center">
+              <div className="flex items-start justify-between mb-4 flex-wrap gap-2">
+                <div className="flex items-center min-w-0 flex-1">
                   {/* Avatar */}
-                  <div className="w-12 h-12 bg-[#045C6D] rounded-full flex items-center justify-center text-white font-semibold text-sm mr-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#045C6D] rounded-full flex items-center justify-center text-white font-semibold text-xs sm:text-sm mr-3 sm:mr-4 shrink-0">
                     {testimonial.avatar}
                   </div>
                   
                   {/* Nome e Localização */}
-                  <div>
-                    <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
-                    <p className="text-sm text-gray-600">{testimonial.location}</p>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-gray-900 text-sm sm:text-base truncate">{testimonial.name}</h3>
+                    <p className="text-xs sm:text-sm text-gray-600 truncate">{testimonial.location}</p>
                   </div>
                 </div>
 
                 {/* Categoria */}
-                <span className="bg-[#045C6D]/10 text-[#045C6D] px-3 py-1 rounded-full text-sm font-medium">
+                <span className="bg-[#045C6D]/10 text-[#045C6D] px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium shrink-0">
                   {testimonial.category}
                 </span>
               </div>
@@ -88,12 +88,12 @@ const Testimonials = () => {
               {/* Rating */}
               <div className="flex items-center mb-3">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <StarIcon key={i} className="w-5 h-5 text-yellow-400" />
+                  <StarIcon key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" />
                 ))}
               </div>
 
               {/* Depoimento */}
-              <blockquote className="text-gray-700 italic">
+              <blockquote className="text-gray-700 italic text-sm sm:text-base leading-relaxed">
                 &quot;{testimonial.text}&quot;
               </blockquote>
             </div>

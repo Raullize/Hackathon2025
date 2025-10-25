@@ -109,44 +109,44 @@ const InteractiveMap = () => {
   const selectedCityData = selectedCity ? cidadesData[selectedCity] : null;
 
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-[#0891b2] mb-4">
+    <section className="py-12 sm:py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#0891b2] mb-4">
           Mapa de Riscos Climáticos - Região do Jacuí
         </h2>
-        <p className="text-center text-gray-600 mb-12">
+        <p className="text-center text-gray-600 mb-8 sm:mb-12 text-sm sm:text-base">
           Clique nas cidades para ver informações climáticas em tempo real
         </p>
         
-        <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex flex-col xl:flex-row gap-6 lg:gap-8">
           {/* Mapa SVG */}
-          <div className="lg:w-2/3">
-            <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 relative h-full">
+          <div className="xl:w-2/3">
+            <div className="bg-gray-50 rounded-lg p-4 sm:p-6 border border-gray-200 relative h-full">
               {/* Legenda movida para fora do SVG */}
-              <div className="absolute bottom-4 left-4 bg-white p-3 rounded-lg shadow-md border border-gray-200">
-                <p className="text-sm font-bold text-gray-800 mb-2">Nível de Risco Climático:</p>
-                <div className="flex items-center gap-4">
+              <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-white p-2 sm:p-3 rounded-lg shadow-md border border-gray-200 text-xs sm:text-sm">
+                <p className="font-bold text-gray-800 mb-1 sm:mb-2">Nível de Risco Climático:</p>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
                   <div className="flex items-center gap-1">
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                    <span className="text-xs text-gray-700">Baixo</span>
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
+                    <span className="text-gray-700">Baixo</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <span className="text-xs text-gray-700">Médio</span>
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+                    <span className="text-gray-700">Médio</span>
                   </div>
                   <div className="flex items-center gap-1">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <span className="text-xs text-gray-700">Alto</span>
+                    <div className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+                    <span className="text-gray-700">Alto</span>
                   </div>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">Fonte: Dados simulados para demonstração</p>
+                <p className="text-gray-500 mt-1 hidden sm:block">Fonte: Dados simulados para demonstração</p>
               </div>
               
               {/* Mapa do Rio Grande do Sul usando imagem */}
-              <div className="relative flex justify-center">
+              <div className="relative flex justify-center overflow-hidden">
                 {/* Hover card no canto superior esquerdo */}
                 {hoveredCity && (
-                  <div className="absolute top-0 left-0 bg-white p-2 rounded-lg shadow-lg border border-gray-200 z-10">
+                  <div className="absolute top-0 left-0 bg-white p-2 rounded-lg shadow-lg border border-gray-200 z-10 text-xs sm:text-sm">
                     <Image 
                       src={`/images/cities/${hoveredCity}.${hoveredCity === 'arroio-dos-ratos' ? 'png' : hoveredCity === 'sao-jeronimo' ? 'jpeg' : 'jpg'}`}
                       alt={cidadesData[hoveredCity].nome}
@@ -492,42 +492,42 @@ const InteractiveMap = () => {
           </div>
           
           {/* Sidebar com informações */}
-          <div className="lg:w-1/3">
-            <div className="bg-gray-50 rounded-lg p-6 border border-gray-200 h-full">
+          <div className="xl:w-1/3">
+            <div className="bg-gray-50 rounded-lg p-4 sm:p-6 border border-gray-200 h-full">
               {selectedCityData ? (
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-                    <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    {selectedCityData.nome}
+                    <span className="truncate">{selectedCityData.nome}</span>
                   </h3>
                   
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
-                        <p className="text-sm text-gray-600">Temperatura</p>
-                        <p className="text-lg font-semibold text-gray-800">
+                  <div className="space-y-3 sm:space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                      <div className="bg-gray-50 p-2 sm:p-3 rounded-lg border border-gray-200">
+                        <p className="text-xs sm:text-sm text-gray-600">Temperatura</p>
+                        <p className="text-base sm:text-lg font-semibold text-gray-800">
                           {selectedCityData.temperatura}
                         </p>
                       </div>
-                      <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
-                        <p className="text-sm text-gray-600">Umidade</p>
-                        <p className="text-lg font-semibold text-gray-800">
+                      <div className="bg-gray-50 p-2 sm:p-3 rounded-lg border border-gray-200">
+                        <p className="text-xs sm:text-sm text-gray-600">Umidade</p>
+                        <p className="text-base sm:text-lg font-semibold text-gray-800">
                           {selectedCityData.umidade}
                         </p>
                       </div>
                     </div>
                     
-                    <div className="bg-gray-50 p-3 rounded-lg border border-gray-200">
-                      <p className="text-sm text-gray-600">Nível de Risco</p>
+                    <div className="bg-gray-50 p-2 sm:p-3 rounded-lg border border-gray-200">
+                      <p className="text-xs sm:text-sm text-gray-600">Nível de Risco</p>
                       <div className="flex items-center gap-2">
                         <div
-                          className="w-3 h-3 rounded-full"
+                          className="w-2 h-2 sm:w-3 sm:h-3 rounded-full"
                           style={{ backgroundColor: getRiskColor(selectedCityData.risco) }}
                         />
-                        <p className="text-lg font-semibold text-gray-800">
+                        <p className="text-base sm:text-lg font-semibold text-gray-800">
                           {selectedCityData.risco}
                         </p>
                       </div>
