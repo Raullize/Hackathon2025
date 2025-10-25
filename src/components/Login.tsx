@@ -1,16 +1,22 @@
 'use client';
 
 import React, { useState } from 'react';
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Lógica de login aqui
     console.log('Login attempt:', { email, password, rememberMe });
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
@@ -44,18 +50,29 @@ const Login = () => {
               </div>
 
               {/* Campo Senha */}
-              <div>
+              <div className="relative">
                 <input
                   id="password"
                   name="password"
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
                   required
-                  className="appearance-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#045C6D] focus:border-[#045C6D] focus:z-10 text-sm"
+                  className="appearance-none relative block w-full px-4 py-3 pr-12 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#045C6D] focus:border-[#045C6D] focus:z-10 text-sm"
                   placeholder="Digite sua senha"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <button
+                  type="button"
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? (
+                    <EyeSlashIcon className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                  ) : (
+                    <EyeIcon className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                  )}
+                </button>
               </div>
             </div>
 
