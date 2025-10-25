@@ -188,6 +188,26 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'charqueadas' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M550 125 C545 125 541 129 541 134 C541 139 550 150 550 150 C550 150 559 139 559 134 C559 129 555 125 550 125 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="550"
+                                cy="134"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="550" y="135" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Charqueadas
                           </text>
@@ -207,6 +227,26 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'triunfo' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M450 150 C445 150 441 154 441 159 C441 164 450 175 450 175 C450 175 459 164 459 159 C459 154 455 150 450 150 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="450"
+                                cy="159"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="450" y="160" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Triunfo
                           </text>
@@ -226,6 +266,26 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'general-camara' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M370 175 C365 175 361 179 361 184 C361 189 370 200 370 200 C370 200 379 189 379 184 C379 179 375 175 370 175 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="370"
+                                cy="184"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="370" y="185" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             General Câmara
                           </text>
@@ -245,6 +305,26 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'sao-jeronimo' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M490 200 C485 200 481 204 481 209 C481 214 490 225 490 225 C490 225 499 214 499 209 C499 204 495 200 490 200 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="490"
+                                cy="209"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="490" y="210" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             São Jerônimo
                           </text>
@@ -264,6 +344,26 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'arroio-dos-ratos' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M520 250 C515 250 511 254 511 259 C511 264 520 275 520 275 C520 275 529 264 529 259 C529 254 525 250 520 250 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="520"
+                                cy="259"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="520" y="260" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Arroio dos Ratos
                           </text>
@@ -283,6 +383,26 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'butia' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M420 285 C415 285 411 289 411 294 C411 299 420 310 420 310 C420 310 429 299 429 294 C429 289 425 285 420 285 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="420"
+                                cy="294"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="420" y="295" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Butiá
                           </text>
@@ -302,6 +422,26 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'minas-do-leao' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M320 315 C315 315 311 319 311 324 C311 329 320 340 320 340 C320 340 329 329 329 324 C329 319 325 315 320 315 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="320"
+                                cy="324"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="320" y="325" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Minas do Leão
                           </text>
@@ -321,6 +461,26 @@ const InteractiveMap = () => {
                             strokeWidth="2"
                             className="hover:opacity-80 transition-opacity drop-shadow-lg"
                           />
+                          {selectedCity === 'barao-do-triunfo' && (
+                            <g>
+                              {/* Pin body - teardrop shape */}
+                              <path
+                                d="M450 370 C445 370 441 374 441 379 C441 384 450 395 450 395 C450 395 459 384 459 379 C459 374 455 370 450 370 Z"
+                                fill="#dc2626"
+                                stroke="white"
+                                strokeWidth="2"
+                                className="drop-shadow-xl"
+                              />
+                              {/* Inner circle */}
+                              <circle
+                                cx="450"
+                                cy="379"
+                                r="4"
+                                fill="white"
+                                className="drop-shadow-sm"
+                              />
+                            </g>
+                          )}
                           <text x="450" y="380" textAnchor="middle" className="text-sm fill-gray-800 font-semibold drop-shadow opacity-0 group-hover:opacity-100 transition-opacity">
                             Barão do Triunfo
                           </text>
