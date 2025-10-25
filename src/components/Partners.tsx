@@ -4,7 +4,6 @@ import React from 'react';
 import Image from 'next/image';
 
 const Partners = () => {
-  // Array com os logos dos parceiros - JGB, Gerdau e GKN duas vezes cada
   const partners = [
     { name: 'JGB', logo: '/images/companies/jgb-logo.png' },
     { name: 'Gerdau', logo: '/images/companies/gerdau-logo.png' },
@@ -21,7 +20,7 @@ const Partners = () => {
           Veja quem confia no nosso trabalho
         </h2>
         
-        {/* Grid de logos estático */}
+
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 justify-items-center">
           {partners.map((partner, index) => (
             <div

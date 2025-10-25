@@ -12,7 +12,7 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Background Video */}
+
       <video
         autoPlay
         loop
@@ -24,12 +24,9 @@ const Hero = () => {
         Seu navegador não suporta vídeos HTML5.
       </video>
       
-      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/50 z-10"></div>
       
-      {/* Content */}
       <div className="relative z-20 max-w-4xl mx-auto text-center">
-        {/* Main Heading */}
         <div className="mb-6 sm:mb-8">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-4">
             Proteja-se dos{' '}
@@ -41,13 +38,11 @@ const Hero = () => {
           </h1>
         </div>
 
-        {/* Description */}
         <p className="text-sm sm:text-base md:text-lg text-gray-100 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4">
           Receba alertas precoces sobre enchentes, tempestades e outros eventos climáticos extremos. 
           O MIRC monitora em tempo real a bacia do Rio Jacuí para manter você e sua família seguros.
         </p>
 
-        {/* CTA Button */}
         <div className="mb-12 sm:mb-16 px-4">
           <button 
             onClick={handleSignupClick}

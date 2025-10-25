@@ -17,7 +17,7 @@ const Footer = () => {
             />
           </div>
 
-          {/* Social Media Links */}
+
            <div className="flex items-center space-x-4 sm:space-x-6">
              <a href="#" className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer">
                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">

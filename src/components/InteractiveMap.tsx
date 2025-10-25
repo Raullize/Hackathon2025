@@ -17,7 +17,6 @@ const InteractiveMap = () => {
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
   const [hoveredCity, setHoveredCity] = useState<string | null>(null);
 
-  // Dados mockados das cidades da região do Jacuí
   const cidadesData: Record<string, CityData> = {
     'arroio-dos-ratos': {
       nome: 'Arroio dos Ratos',
@@ -119,10 +118,8 @@ const InteractiveMap = () => {
         </p>
         
         <div className="flex flex-col xl:flex-row gap-6 lg:gap-8">
-          {/* Mapa SVG */}
           <div className="xl:w-2/3">
             <div className="bg-gray-50 rounded-lg p-4 sm:p-6 border border-gray-200 relative h-full">
-              {/* Legenda movida para fora do SVG */}
               <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-white p-2 sm:p-3 rounded-lg shadow-md border border-gray-200 text-xs sm:text-sm">
                 <p className="font-bold text-gray-800 mb-1 sm:mb-2">Nível de Risco Climático:</p>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
@@ -142,9 +139,7 @@ const InteractiveMap = () => {
                 <p className="text-gray-500 mt-1 hidden sm:block">Fonte: Dados simulados para demonstração</p>
               </div>
               
-              {/* Mapa do Rio Grande do Sul usando imagem */}
               <div className="relative flex justify-center overflow-hidden">
-                {/* Hover card no canto superior esquerdo */}
                 {hoveredCity && (
                   <div className="absolute top-0 left-0 bg-white p-2 rounded-lg shadow-lg border border-gray-200 z-10 text-xs sm:text-sm">
                     <Image 
@@ -167,14 +162,12 @@ const InteractiveMap = () => {
                   priority
                 />
                 
-                {/* SVG overlay para os pontos das cidades */}
                 <svg 
                   className="absolute top-0 left-0 w-full h-full" 
                   viewBox="0 0 800 600" 
                   preserveAspectRatio="xMidYMid meet"
                 >
                   <g>
-                        {/* Charqueadas */}
                         <g className="cursor-pointer group" 
                            onClick={() => handleCityClick('charqueadas')}
                            onMouseEnter={() => setHoveredCity('charqueadas')}
@@ -190,7 +183,6 @@ const InteractiveMap = () => {
                           />
                           {selectedCity === 'charqueadas' && (
                             <g>
-                              {/* Pin body - teardrop shape */}
                               <path
                                 d="M550 125 C545 125 541 129 541 134 C541 139 550 150 550 150 C550 150 559 139 559 134 C559 129 555 125 550 125 Z"
                                 fill="#dc2626"
@@ -198,7 +190,6 @@ const InteractiveMap = () => {
                                 strokeWidth="2"
                                 className="drop-shadow-xl"
                               />
-                              {/* Inner circle */}
                               <circle
                                 cx="550"
                                 cy="134"
@@ -213,7 +204,6 @@ const InteractiveMap = () => {
                           </text>
                         </g>
                         
-                        {/* Triunfo */}
                         <g className="cursor-pointer group" 
                            onClick={() => handleCityClick('triunfo')}
                            onMouseEnter={() => setHoveredCity('triunfo')}
@@ -229,7 +219,6 @@ const InteractiveMap = () => {
                           />
                           {selectedCity === 'triunfo' && (
                             <g>
-                              {/* Pin body - teardrop shape */}
                               <path
                                 d="M450 150 C445 150 441 154 441 159 C441 164 450 175 450 175 C450 175 459 164 459 159 C459 154 455 150 450 150 Z"
                                 fill="#dc2626"
@@ -237,7 +226,6 @@ const InteractiveMap = () => {
                                 strokeWidth="2"
                                 className="drop-shadow-xl"
                               />
-                              {/* Inner circle */}
                               <circle
                                 cx="450"
                                 cy="159"
@@ -252,7 +240,6 @@ const InteractiveMap = () => {
                           </text>
                         </g>
                         
-                        {/* General Câmara */}
                         <g className="cursor-pointer group" 
                            onClick={() => handleCityClick('general-camara')}
                            onMouseEnter={() => setHoveredCity('general-camara')}
@@ -268,7 +255,6 @@ const InteractiveMap = () => {
                           />
                           {selectedCity === 'general-camara' && (
                             <g>
-                              {/* Pin body - teardrop shape */}
                               <path
                                 d="M370 175 C365 175 361 179 361 184 C361 189 370 200 370 200 C370 200 379 189 379 184 C379 179 375 175 370 175 Z"
                                 fill="#dc2626"
@@ -276,7 +262,6 @@ const InteractiveMap = () => {
                                 strokeWidth="2"
                                 className="drop-shadow-xl"
                               />
-                              {/* Inner circle */}
                               <circle
                                 cx="370"
                                 cy="184"
@@ -291,7 +276,6 @@ const InteractiveMap = () => {
                           </text>
                         </g>
                         
-                        {/* São Jerônimo */}
                         <g className="cursor-pointer group" 
                            onClick={() => handleCityClick('sao-jeronimo')}
                            onMouseEnter={() => setHoveredCity('sao-jeronimo')}
@@ -307,7 +291,6 @@ const InteractiveMap = () => {
                           />
                           {selectedCity === 'sao-jeronimo' && (
                             <g>
-                              {/* Pin body - teardrop shape */}
                               <path
                                 d="M490 200 C485 200 481 204 481 209 C481 214 490 225 490 225 C490 225 499 214 499 209 C499 204 495 200 490 200 Z"
                                 fill="#dc2626"
@@ -315,7 +298,6 @@ const InteractiveMap = () => {
                                 strokeWidth="2"
                                 className="drop-shadow-xl"
                               />
-                              {/* Inner circle */}
                               <circle
                                 cx="490"
                                 cy="209"
@@ -330,7 +312,6 @@ const InteractiveMap = () => {
                           </text>
                         </g>
                         
-                        {/* Arroio dos Ratos */}
                         <g className="cursor-pointer group" 
                            onClick={() => handleCityClick('arroio-dos-ratos')}
                            onMouseEnter={() => setHoveredCity('arroio-dos-ratos')}
@@ -346,7 +327,6 @@ const InteractiveMap = () => {
                           />
                           {selectedCity === 'arroio-dos-ratos' && (
                             <g>
-                              {/* Pin body - teardrop shape */}
                               <path
                                 d="M520 250 C515 250 511 254 511 259 C511 264 520 275 520 275 C520 275 529 264 529 259 C529 254 525 250 520 250 Z"
                                 fill="#dc2626"
@@ -354,7 +334,6 @@ const InteractiveMap = () => {
                                 strokeWidth="2"
                                 className="drop-shadow-xl"
                               />
-                              {/* Inner circle */}
                               <circle
                                 cx="520"
                                 cy="259"
@@ -369,7 +348,6 @@ const InteractiveMap = () => {
                           </text>
                         </g>
                         
-                        {/* Butiá */}
                         <g className="cursor-pointer group" 
                            onClick={() => handleCityClick('butia')}
                            onMouseEnter={() => setHoveredCity('butia')}
@@ -385,7 +363,6 @@ const InteractiveMap = () => {
                           />
                           {selectedCity === 'butia' && (
                             <g>
-                              {/* Pin body - teardrop shape */}
                               <path
                                 d="M420 285 C415 285 411 289 411 294 C411 299 420 310 420 310 C420 310 429 299 429 294 C429 289 425 285 420 285 Z"
                                 fill="#dc2626"
@@ -393,7 +370,6 @@ const InteractiveMap = () => {
                                 strokeWidth="2"
                                 className="drop-shadow-xl"
                               />
-                              {/* Inner circle */}
                               <circle
                                 cx="420"
                                 cy="294"
@@ -408,7 +384,6 @@ const InteractiveMap = () => {
                           </text>
                         </g>
                         
-                        {/* Minas do Leão */}
                         <g className="cursor-pointer group" 
                            onClick={() => handleCityClick('minas-do-leao')}
                            onMouseEnter={() => setHoveredCity('minas-do-leao')}
@@ -424,7 +399,6 @@ const InteractiveMap = () => {
                           />
                           {selectedCity === 'minas-do-leao' && (
                             <g>
-                              {/* Pin body - teardrop shape */}
                               <path
                                 d="M320 315 C315 315 311 319 311 324 C311 329 320 340 320 340 C320 340 329 329 329 324 C329 319 325 315 320 315 Z"
                                 fill="#dc2626"
@@ -432,7 +406,6 @@ const InteractiveMap = () => {
                                 strokeWidth="2"
                                 className="drop-shadow-xl"
                               />
-                              {/* Inner circle */}
                               <circle
                                 cx="320"
                                 cy="324"
@@ -447,7 +420,6 @@ const InteractiveMap = () => {
                           </text>
                         </g>
                         
-                        {/* Barão do Triunfo */}
                         <g className="cursor-pointer group" 
                            onClick={() => handleCityClick('barao-do-triunfo')}
                            onMouseEnter={() => setHoveredCity('barao-do-triunfo')}
@@ -463,7 +435,6 @@ const InteractiveMap = () => {
                           />
                           {selectedCity === 'barao-do-triunfo' && (
                             <g>
-                              {/* Pin body - teardrop shape */}
                               <path
                                 d="M450 370 C445 370 441 374 441 379 C441 384 450 395 450 395 C450 395 459 384 459 379 C459 374 455 370 450 370 Z"
                                 fill="#dc2626"
@@ -471,7 +442,6 @@ const InteractiveMap = () => {
                                 strokeWidth="2"
                                 className="drop-shadow-xl"
                               />
-                              {/* Inner circle */}
                               <circle
                                 cx="450"
                                 cy="379"
@@ -491,7 +461,6 @@ const InteractiveMap = () => {
             </div>
           </div>
           
-          {/* Sidebar com informações */}
           <div className="xl:w-1/3">
             <div className="bg-gray-50 rounded-lg p-4 sm:p-6 border border-gray-200 h-full">
               {selectedCityData ? (

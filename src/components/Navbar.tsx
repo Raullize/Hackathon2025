@@ -45,7 +45,6 @@ const Navbar = () => {
       <nav className="bg-[#19323B] shadow-lg border-b border-[#045C6D]/20 relative z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
             <div className="shrink-0">
               <Image 
                 src="/logos/logo-2.png" 
@@ -56,7 +55,6 @@ const Navbar = () => {
               />
             </div>
 
-            {/* Navigation Links - Desktop */}
             <div className="hidden md:flex items-center space-x-6">
               <div className="flex items-baseline space-x-6">
                  {['Parceiros', 'Mapa', 'Depoimentos', 'FAQ', 'Contato'].map((item) => (
@@ -70,7 +68,6 @@ const Navbar = () => {
                  ))}
                </div>
 
-              {/* Login/Logout Button - Glass Effect */}
               {isAuthenticated ? (
                 <div className="flex items-center space-x-4">
                   <span className="text-gray-300 text-sm">
@@ -92,8 +89,6 @@ const Navbar = () => {
                 </button>
               )}
             </div>
-
-            {/* Mobile menu button */}
             <div className="md:hidden">
               <button 
                 onClick={toggleMobileMenu}
@@ -109,7 +104,6 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div 
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
@@ -117,11 +111,9 @@ const Navbar = () => {
         />
       )}
 
-      {/* Mobile Menu Sidebar */}
       <div className={`fixed top-0 left-0 h-full w-80 bg-[#19323B] transform transition-transform duration-300 ease-in-out z-50 md:hidden ${
         isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
-        {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-[#045C6D]/20">
           <div className="flex items-center">
             <Image 
@@ -143,7 +135,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Menu Items */}
         <div className="py-6">
           {menuItems.map((item) => (
             <a
@@ -157,10 +148,8 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Divider */}
         <div className="border-t border-[#045C6D]/20 mx-6"></div>
 
-        {/* Contact Section */}
         <div className="p-6">
           <h3 className="text-[#0891b2] text-lg font-semibold mb-4">Entre em Contato</h3>
           <div className="space-y-3">
@@ -168,7 +157,6 @@ const Navbar = () => {
             <p className="text-gray-300 text-sm">(51) 3333-4444</p>
           </div>
           
-          {/* Social Icons */}
           <div className="flex space-x-4 mt-6">
             <a href="#" className="text-gray-300 hover:text-[#0891b2] transition-colors duration-200 cursor-pointer">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -192,7 +180,6 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Login/Logout Button */}
           {isAuthenticated ? (
             <div className="space-y-4">
               <div className="text-center">

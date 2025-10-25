@@ -24,7 +24,6 @@ export class AuthController {
         };
       }
 
-      // Validar formato do telefone (apenas números)
       const phoneRegex = /^\d{10,15}$/;
       if (!phoneRegex.test(data.phone.replace(/\D/g, ''))) {
         return {
@@ -140,7 +139,6 @@ export class AuthController {
         };
       }
 
-      // Verificar senha
       const isPasswordValid = await verifyPassword(data.password, user.passwordHash);
 
       if (!isPasswordValid) {

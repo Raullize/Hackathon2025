@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 const FAQ = () => {
-  const [openItems, setOpenItems] = useState<number[]>([0]); // Primeiro item aberto por padrão
+  const [openItems, setOpenItems] = useState<number[]>([0]); 
 
   const faqData = [
     {

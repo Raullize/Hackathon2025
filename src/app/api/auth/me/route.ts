@@ -13,9 +13,8 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const token = authHeader.substring(7); // Remove "Bearer "
+    const token = authHeader.substring(7); 
     
-    // Decodificar o token para obter o userId
     const decoded = verifyToken(token);
     if (!decoded) {
       return NextResponse.json(

@@ -10,7 +10,7 @@ export interface CityMapData {
   };
   imageUrl: string;
   data: {
-    waterLevel: number; // Nível da água em metros
+    waterLevel: number; 
     status: 'normal' | 'alerta' | 'emergencia';
     riskLevel: 'baixo' | 'medio' | 'alto';
     lastUpdate: string;

@@ -49,7 +49,6 @@ export function ChatBot() {
 
   return (
     <>
-      {/* Botão Flutuante */}
       <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={toggleChat}
@@ -66,10 +65,8 @@ export function ChatBot() {
         </button>
       </div>
 
-      {/* Interface do Chat */}
       {isOpen && (
         <div className="fixed bottom-24 right-6 z-40 w-96 h-[500px] bg-white border border-gray-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
-          {/* Header do Chat */}
           <div className="bg-[#045C6D] text-white p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <Image
@@ -95,7 +92,6 @@ export function ChatBot() {
             </button>
           </div>
 
-          {/* Área de Mensagens */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50">
             {!isAuthenticated ? (
               <div className="text-center">
@@ -146,7 +142,6 @@ export function ChatBot() {
                </div>
              ))}
 
-            {/* Loading indicator */}
             {isTyping && (
               <div className="flex justify-start mb-4">
                 <div className="bg-gray-100 rounded-lg px-4 py-2 max-w-xs">
@@ -162,7 +157,6 @@ export function ChatBot() {
             )}
           </div>
 
-          {/* Input de Mensagem */}
           <form onSubmit={handleSubmit} className="p-4 bg-white border-t border-gray-100">
             <div className="flex items-center space-x-2">
               <input

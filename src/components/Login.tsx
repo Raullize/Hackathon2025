@@ -25,11 +25,9 @@ const Login = () => {
   const [isRegisterMode, setIsRegisterMode] = useState(false);
   const [registerStep, setRegisterStep] = useState(1);
 
-  // Detectar se deve iniciar em modo de cadastro
   useEffect(() => {
     const mode = searchParams.get('mode');
     if (mode === 'register') {
-      // Use setTimeout para evitar setState síncrono dentro do effect
       setTimeout(() => {
         setIsRegisterMode(true);
         setRegisterStep(1);
@@ -37,7 +35,6 @@ const Login = () => {
     }
   }, [searchParams]);
   
-  // Dados do registro - Etapa 1
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
@@ -46,67 +43,54 @@ const Login = () => {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   
-  // Dados do registro - Etapa 2
   const [registerPassword, setRegisterPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showRegisterPassword, setShowRegisterPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
 
-  // Função para lidar com login/cadastro via Google
   const handleGoogleLogin = async () => {
-    // Apenas visual - não faz nada ao clicar
     console.log('Botão Google clicado - apenas visual');
   };
 
-  // Função para alternar visibilidade da senha
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  // Função para alternar visibilidade da senha de registro
   const toggleRegisterPasswordVisibility = () => {
     setShowRegisterPassword(!showRegisterPassword);
   };
 
-  // Função para alternar visibilidade da confirmação de senha
   const toggleConfirmPasswordVisibility = () => {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  // Função para alternar entre login e registro
   const toggleToRegister = () => {
     setIsRegisterMode(true);
     setRegisterStep(1);
   };
 
-  // Função para voltar ao login
   const backToLogin = () => {
     setIsRegisterMode(false);
     setRegisterStep(1);
   };
 
-  // Função para voltar à primeira etapa do registro
   const goBackToStep1 = () => {
     setRegisterStep(1);
   };
 
-  // Função para voltar à página inicial
   const goBackToHome = () => {
     router.push('/');
   };
 
-  // Função para ir para a segunda etapa
   const goToStep2 = () => {
     setRegisterStep(2);
   };
 
-  // Função para lidar com o envio do formulário
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!isRegisterMode) {
-      // Login
       setLoginError('');
       const result = await login(email, password);
       
@@ -116,7 +100,6 @@ const Login = () => {
         setLoginError(result.error || 'Erro no login');
       }
     } else if (registerStep === 2) {
-      // Registro - Etapa 2
       setRegisterError('');
       
       if (registerPassword !== confirmPassword) {
@@ -150,39 +133,30 @@ const Login = () => {
     }
   };
 
-  // Função para calcular força da senha
   const calculatePasswordStrength = (password: string): number => {
     let strength = 0;
     
-    // Comprimento mínimo
     if (password.length >= 8) strength += 25;
     
-    // Contém letras minúsculas
     if (/[a-z]/.test(password)) strength += 15;
     
-    // Contém letras maiúsculas
     if (/[A-Z]/.test(password)) strength += 15;
     
-    // Contém números
     if (/\d/.test(password)) strength += 15;
     
-    // Contém caracteres especiais
     if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength += 15;
     
-    // Comprimento extra (mais de 12 caracteres)
     if (password.length >= 12) strength += 15;
     
     return Math.min(strength, 100);
   };
 
-  // Função para obter texto da força da senha
   const getPasswordStrengthText = (strength: number): string => {
     if (strength < 50) return 'Fraca';
     if (strength < 75) return 'Média';
     return 'Forte';
   };
 
-  // Função para obter cor da barra de força
   const getPasswordStrengthColor = (strength: number): string => {
     if (strength < 50) return 'bg-red-500';
     if (strength < 75) return 'bg-yellow-500';
@@ -191,10 +165,8 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex">
-      {/* Lado Esquerdo - Formulário de Login */}
       <div className="flex-1 flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
-          {/* Botão Voltar */}
           <div className="flex justify-start">
             <button
               type="button"
@@ -208,7 +180,6 @@ const Login = () => {
             </button>
           </div>
 
-          {/* Título */}
           <div className="text-center">
             <h2 className="text-3xl font-bold text-[#045C6D] mb-2">
               {isRegisterMode 
@@ -227,13 +198,10 @@ const Login = () => {
             )}
           </div>
 
-          {/* Formulário */}
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             {!isRegisterMode ? (
-              // FORMULÁRIO DE LOGIN
               <>
                 <div className="space-y-4">
-                  {/* Campo Email */}
                   <div>
                     <input
                       id="email"
@@ -248,7 +216,6 @@ const Login = () => {
                     />
                   </div>
 
-                  {/* Campo Senha */}
                   <div className="relative">
                     <input
                       id="password"
@@ -275,14 +242,12 @@ const Login = () => {
                   </div>
                 </div>
 
-                {/* Mensagem de erro para login */}
                 {loginError && (
                   <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-lg">
                     {loginError}
                   </div>
                 )}
 
-                {/* Opções */}
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center">
                     <input
@@ -305,7 +270,6 @@ const Login = () => {
                   </div>
                 </div>
 
-                {/* Botão de Login */}
                 <div>
                   <button
                     type="submit"
@@ -316,7 +280,6 @@ const Login = () => {
                   </button>
                 </div>
 
-                {/* Divisor */}
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
                     <div className="w-full border-t border-gray-300" />
@@ -326,7 +289,6 @@ const Login = () => {
                   </div>
                 </div>
 
-                {/* Botão de Login com Google */}
                 <div>
                   <button
                     type="button"
@@ -343,7 +305,6 @@ const Login = () => {
                   </button>
                 </div>
 
-                {/* Link para Criar Conta */}
                 <div className="text-center">
                   <p className="text-sm text-gray-600">
                     Não tem conta ainda?{' '}
@@ -358,7 +319,6 @@ const Login = () => {
                 </div>
               </>
             ) : registerStep === 1 ? (
-              // FORMULÁRIO DE REGISTRO - ETAPA 1
               <>
                 <div className="space-y-4">
                   {/* Nome */}
@@ -389,7 +349,6 @@ const Login = () => {
                     </div>
                   </div>
 
-                  {/* Email */}
                   <div>
                     <input
                       id="registerEmail"
@@ -403,7 +362,6 @@ const Login = () => {
                     />
                   </div>
 
-                  {/* Telefone */}
                   <div>
                     <input
                       id="phone"
@@ -417,7 +375,6 @@ const Login = () => {
                     />
                   </div>
 
-                  {/* CEP e Cidade */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <input
@@ -446,7 +403,6 @@ const Login = () => {
                     </div>
                   </div>
 
-                  {/* Estado */}
                   <div>
                     <input
                       id="state"
@@ -462,14 +418,12 @@ const Login = () => {
                   </div>
                 </div>
 
-                {/* Mensagem de erro para registro etapa 1 */}
                 {registerError && registerStep === 1 && (
                   <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-lg">
                     {registerError}
                   </div>
                 )}
 
-                {/* Divisor */}
                 <div className="relative">
                   <div className="absolute inset-0 flex items-center">
                     <div className="w-full border-t border-gray-300" />
@@ -479,7 +433,6 @@ const Login = () => {
                   </div>
                 </div>
 
-                {/* Botão de Cadastro com Google */}
                 <div>
                   <button
                     type="button"
@@ -496,7 +449,6 @@ const Login = () => {
                   </button>
                 </div>
 
-                {/* Botões */}
                 <div className="space-y-3">
                   <button
                     type="button"
@@ -519,10 +471,8 @@ const Login = () => {
                 </div>
               </>
             ) : (
-              // FORMULÁRIO DE REGISTRO - ETAPA 2
               <>
                 <div className="space-y-4">
-                  {/* Campo Senha */}
                   <div className="relative">
                     <input
                       id="registerPassword"
@@ -547,7 +497,6 @@ const Login = () => {
                     </button>
                   </div>
 
-                  {/* Barra de Força da Senha */}
                   {registerPassword && (
                     <div className="space-y-2">
                       <div className="flex justify-between text-xs">
@@ -568,7 +517,6 @@ const Login = () => {
                     </div>
                   )}
 
-                  {/* Campo Confirmar Senha */}
                   <div className="relative">
                     <input
                       id="confirmPassword"
@@ -597,27 +545,23 @@ const Login = () => {
                     </button>
                   </div>
 
-                  {/* Mensagem de erro para senhas diferentes */}
                   {confirmPassword && registerPassword !== confirmPassword && (
                     <p className="text-red-500 text-xs">As senhas não coincidem</p>
                   )}
                 </div>
 
-                {/* Mensagem de erro para registro etapa 2 */}
                 {registerError && registerStep === 2 && (
                   <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-lg">
                     {registerError}
                   </div>
                 )}
 
-                {/* Mensagem de sucesso para registro */}
                 {registerSuccess && (
                   <div className="text-green-600 text-sm text-center bg-green-50 p-3 rounded-lg">
                     Conta criada com sucesso! Redirecionando para o login...
                   </div>
                 )}
 
-                {/* Checkbox de aceitar termos */}
                 <div className="flex items-start space-x-3">
                   <input
                     id="acceptTerms"
@@ -639,7 +583,6 @@ const Login = () => {
                   </label>
                 </div>
 
-                {/* Botões */}
                 <div className="space-y-3">
                   <button
                     type="submit"
@@ -663,7 +606,6 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Lado Direito - Vídeo Background */}
       <div className="hidden lg:flex flex-1 relative">
         <video
           autoPlay
@@ -676,10 +618,8 @@ const Login = () => {
           Seu navegador não suporta vídeos HTML5.
         </video>
         
-        {/* Overlay escuro para melhor legibilidade */}
         <div className="absolute inset-0 bg-black/30"></div>
         
-        {/* Blur verde sutil */}
         <div className="absolute inset-0 bg-[#045C6D]/25 backdrop-blur-[1px]"></div>
       </div>
     </div>
