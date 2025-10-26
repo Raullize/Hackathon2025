@@ -41,13 +41,13 @@ export async function POST(req: Request) {
       messages: coreMessages,
     });
     return result.toUIMessageStreamResponse();
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Erro na API de chat:', error);
 
-    if (error.name === 'AI_InvalidPromptError' && error.cause?.issues) {
+    if (error instanceof Error && error.name === 'AI_InvalidPromptError' && 'cause' in error && error.cause && typeof error.cause === 'object' && 'issues' in error.cause) {
       console.error(
         'Detalhes da Validação:',
-        JSON.stringify(error.cause.issues, null, 2)
+        JSON.stringify((error.cause as Record<string, unknown>).issues, null, 2)
       );
     }
 

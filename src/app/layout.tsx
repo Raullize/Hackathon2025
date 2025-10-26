@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Sora } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/hooks/useAuth";
@@ -9,12 +9,16 @@ const sora = Sora({
   variable: "--font-sora",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: "MIRC - Início",
   description: "MIRC - Movimento Integrado de Revitalização das Cidades. Plataforma dedicada ao desenvolvimento urbano sustentável e revitalização de cidades na região metropolitana.",
   keywords: "MIRC, revitalização urbana, desenvolvimento sustentável, cidades, urbanismo, planejamento urbano",
   authors: [{ name: "MIRC" }],
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
   openGraph: {
     title: "MIRC - Movimento Integrado de Revitalização das Cidades",

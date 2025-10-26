@@ -180,7 +180,7 @@ const mockMapData: CityMapData[] = [
 /**
  * API Handler para buscar os dados mocados do mapa.
  */
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const data = mockMapData;
     return NextResponse.json(data);
