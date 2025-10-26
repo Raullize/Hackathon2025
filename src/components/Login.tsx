@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
+import { authToasts } from '@/utils/toast';
 
 const Login = () => {
   const searchParams = useSearchParams();
@@ -11,7 +12,6 @@ const Login = () => {
   const { login, register, isLoading } = useAuth();
   
   // Estados para mensagens de erro e sucesso
-  const [loginError, setLoginError] = useState('');
   const [registerError, setRegisterError] = useState('');
   const [registerSuccess, setRegisterSuccess] = useState(false);
 
@@ -49,8 +49,76 @@ const Login = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [acceptTerms, setAcceptTerms] = useState(false);
 
+  // Função para formatar telefone
+  const formatPhone = (value: string) => {
+    // Remove tudo que não é número
+    const numbers = value.replace(/\D/g, '');
+    
+    // Aplica a formatação (xx) xxxxx-xxxx
+    if (numbers.length <= 2) {
+      return numbers;
+    } else if (numbers.length <= 7) {
+      return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+    } else if (numbers.length <= 11) {
+      return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7)}`;
+    } else {
+      return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
+    }
+  };
+
+  // Validação da primeira etapa do registro
+  const validateStep1 = () => {
+    if (!firstName.trim()) {
+      setRegisterError('Nome é obrigatório');
+      return false;
+    }
+    if (!lastName.trim()) {
+      setRegisterError('Sobrenome é obrigatório');
+      return false;
+    }
+    if (!registerEmail.trim()) {
+      setRegisterError('E-mail é obrigatório');
+      return false;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(registerEmail)) {
+      setRegisterError('E-mail inválido');
+      return false;
+    }
+    if (!phone.trim()) {
+      setRegisterError('Telefone é obrigatório');
+      return false;
+    }
+    if (phone.replace(/\D/g, '').length < 10) {
+      setRegisterError('Telefone deve ter pelo menos 10 dígitos');
+      return false;
+    }
+    if (!zipCode.trim()) {
+      setRegisterError('CEP é obrigatório');
+      return false;
+    }
+    if (zipCode.length < 8) {
+      setRegisterError('CEP deve ter 8 dígitos');
+      return false;
+    }
+    if (!city.trim()) {
+      setRegisterError('Cidade é obrigatória');
+      return false;
+    }
+    if (!state.trim()) {
+      setRegisterError('Estado é obrigatório');
+      return false;
+    }
+    if (state.length !== 2) {
+      setRegisterError('Estado deve ter 2 letras (ex: RS)');
+      return false;
+    }
+    
+    setRegisterError('');
+    return true;
+  };
+
   const handleGoogleLogin = async () => {
-    console.log('Botão Google clicado - apenas visual');
+    authToasts.googleNotImplemented();
   };
 
   const togglePasswordVisibility = () => {
@@ -68,15 +136,18 @@ const Login = () => {
   const toggleToRegister = () => {
     setIsRegisterMode(true);
     setRegisterStep(1);
+    setRegisterError('');
   };
 
   const backToLogin = () => {
     setIsRegisterMode(false);
     setRegisterStep(1);
+    setRegisterError('');
   };
 
   const goBackToStep1 = () => {
     setRegisterStep(1);
+    setRegisterError('');
   };
 
   const goBackToHome = () => {
@@ -84,34 +155,54 @@ const Login = () => {
   };
 
   const goToStep2 = () => {
-    setRegisterStep(2);
+    if (validateStep1()) {
+      setRegisterStep(2);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!isRegisterMode) {
-      setLoginError('');
+      authToasts.loginLoading();
+      
       const result = await login(email, password);
       
       if (result.success) {
-        router.push('/');
+        authToasts.loginSuccess();
+        setTimeout(() => {
+          router.push('/');
+        }, 1000);
       } else {
-        setLoginError(result.error || 'Erro no login');
+        authToasts.loginError(result.error || 'Erro no login');
+      }
+    } else if (registerStep === 1) {
+      // Validação da primeira etapa
+      if (validateStep1()) {
+        goToStep2();
       }
     } else if (registerStep === 2) {
       setRegisterError('');
       
       if (registerPassword !== confirmPassword) {
         setRegisterError('As senhas não coincidem');
+        authToasts.passwordMismatch();
         return;
       }
+      
+      if (!acceptTerms) {
+        setRegisterError('Você deve aceitar os termos de uso');
+        authToasts.termsRequired();
+        return;
+      }
+      
+      authToasts.registerLoading();
       
       const userData = {
         firstName,
         lastName,
         email: registerEmail,
-        phone,
+        phone: phone.replace(/\D/g, ''), // Remove formatação antes de enviar
         password: registerPassword,
         zipCode,
         city,
@@ -121,13 +212,26 @@ const Login = () => {
       const result = await register(userData);
       
       if (result.success) {
+        authToasts.registerSuccess();
         setRegisterSuccess(true);
         setTimeout(() => {
           setIsRegisterMode(false);
           setRegisterStep(1);
           setRegisterSuccess(false);
+          // Limpar campos
+          setFirstName('');
+          setLastName('');
+          setRegisterEmail('');
+          setPhone('');
+          setZipCode('');
+          setCity('');
+          setState('');
+          setRegisterPassword('');
+          setConfirmPassword('');
+          setAcceptTerms(false);
         }, 2000);
       } else {
+        authToasts.registerError(result.error || 'Erro no cadastro');
         setRegisterError(result.error || 'Erro no cadastro');
       }
     }
@@ -242,11 +346,7 @@ const Login = () => {
                   </div>
                 </div>
 
-                {loginError && (
-                  <div className="text-red-600 text-sm text-center bg-red-50 p-3 rounded-lg">
-                    {loginError}
-                  </div>
-                )}
+
 
                 <div className="flex items-center justify-between text-sm">
                   <div className="flex items-center">
@@ -369,9 +469,9 @@ const Login = () => {
                       type="tel"
                       required
                       className="appearance-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#045C6D] focus:border-[#045C6D] focus:z-10 text-sm"
-                      placeholder="Telefone (11) 99999-9999"
+                      placeholder="Telefone"
                       value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      onChange={(e) => setPhone(formatPhone(e.target.value))}
                     />
                   </div>
 
@@ -411,7 +511,7 @@ const Login = () => {
                       required
                       maxLength={2}
                       className="appearance-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#045C6D] focus:border-[#045C6D] focus:z-10 text-sm"
-                      placeholder="Estado (SP)"
+                      placeholder="Estado"
                       value={state}
                       onChange={(e) => setState(e.target.value.toUpperCase())}
                     />

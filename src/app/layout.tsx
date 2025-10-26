@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Sora } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/hooks/useAuth";
+import { Toaster } from "sonner";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -38,6 +39,12 @@ export default function RootLayout({
       <body className={`${sora.className} antialiased`}>
         <AuthProvider>
           {children}
+          <Toaster 
+            position="top-right"
+            richColors
+            closeButton={false}
+            duration={4000}
+          />
         </AuthProvider>
       </body>
     </html>
