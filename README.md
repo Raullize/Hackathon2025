@@ -12,6 +12,18 @@ O MIRC foi desenvolvido para proteger comunidades dos riscos climáticos extremo
 - **👤 Autenticação Segura**: Sistema completo de login e cadastro de usuários
 - **📱 Interface Responsiva**: Design moderno e adaptável para todos os dispositivos
 
+## 🎬 Demonstração
+
+Veja o MIRC em ação! Confira nossa demonstração completa das principais funcionalidades:
+
+<div align="center">
+  <img src="public/videos/demo/demo.gif" alt="Demonstração do MIRC - Mapeador Inteligente de Resiliência Climática" width="800">
+</div>
+
+> 📱 **Quer ver mais detalhes?** [Clique aqui para visualizar em tamanho completo](public/videos/demo/demo.gif)
+
+> ⏳ **Nota**: A demonstração pode demorar alguns segundos para carregar devido ao tamanho do arquivo. Por favor, aguarde!
+
 ## 🚀 Tecnologias Utilizadas
 
 ### Frontend

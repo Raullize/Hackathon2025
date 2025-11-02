@@ -8,11 +8,7 @@ import { useAuth } from '@/hooks/useAuth';
 const Navbar = () => {
   const router = useRouter();
   const { user, logout, isAuthenticated } = useAuth();
-  const userExists = user !== null;
 
-  const handleLogout = () => {
-    logout();
-  };
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleLoginClick = () => {

@@ -76,7 +76,7 @@ export class AuthController {
 
       const passwordHash = await hashPassword(data.password);
 
-      const user = await prisma.user.create({
+      await prisma.user.create({
         data: {
           firstName: data.firstName,
           lastName: data.lastName,
@@ -152,23 +152,22 @@ export class AuthController {
       // Gerar token JWT
       const token = generateToken(user.id);
 
-      const userData: UserResponse = {
-        id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        phone: user.phone,
-        zipCode: user.zipCode,
-        city: user.city,
-        state: user.state,
-        createdAt: user.createdAt
-      };
-
       return {
         success: true,
         data: {
           message: 'Login realizado com sucesso',
-          token
+          token,
+          user: {
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            phone: user.phone,
+            zipCode: user.zipCode,
+            city: user.city,
+            state: user.state,
+            createdAt: user.createdAt
+          }
         }
       };
 
