@@ -251,8 +251,6 @@ GOOGLE_API_KEY=your-google-ai-api-key-here
 2. Crie uma nova API Key
 3. Adicione a chave no arquivo `.env` como `GOOGLE_API_KEY`
 
-
-
 ## 🤝 Contribuição
 
 1. Fork o projeto
